@@ -38,6 +38,3 @@ format:
     link-external-newwindow: true
     link-external-filter: '^(?:http:|https:)\/\/https://cautious-chainsaw-1w342kr'
     highlight-style: dracula
-
-execute:
-  freeze: auto
