@@ -1,0 +1,20 @@
+---
+title: "DRIVE"
+execute:
+  eval: false
+  echo: true
+---
+
+### Overview
+
+<p>DRIVE (Disease Reporting and Interoperability Verification Engine) is a Rhapsody-based system that performs the middleware processing of ELRs between WELRS and WDRS. DRIVE reformats data, standardizes values for the widely varying information received from different reporting laboratories, and sends ELRs on to WDRS for workflow processing and end-user evaluation.</p>
+
+<p>The DRIVE team also manages the MPI person-matching process which utilizes vendors to create matching algorithms and person databases. This occurs after WELRS processing and before DRIVE.</p>
+
+<p>DRIVE was developed by the DOH Tech Ops team. Workflows for processing ELR messages and importing them into WDRS are managed by the DOH [WDRS](wdrs.qmd) team. These workflows include the management of key output pairs (KOPs) which are used for standardizing values in WDRS. The WDRS team works with the ELR team, as well, on DRIVE change requests and testing.</p>
+
+### Value Standardization and KOPs
+
+<p>During value standardization, DRIVE fills standardized values in fields prefixed with "WDRS\_" using KOPs to determine these values. In the case of sequencing, where data are often free-text and often changing (e.g., submission of new lineages), WDRS staff must semi-manually create new KOPs for the newly-encountered, non-standardized values.</p>
+
+<p>As WELRs reformats HL7 messages into MIFs (XML formatting), fields which may be standardized during processing by DRIVE are filled with the value "TBD_BY_DRIVE+". SQL tables exist which contain MIFs after WELRs processing (DRIVE.SavedMIF), as well as MIFs after DRIVE processing (DRIVE.OutputMIF). Comparing WELRs and DRIVE MIFs may be useful when troubleshooting DRIVE errors.</p>

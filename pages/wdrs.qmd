@@ -1,0 +1,23 @@
+---
+title: "WDRS"
+---
+
+<p>[WDRS](https://doh.wa.gov/public-health-healthcare-providers/public-health-system-resources-and-services/wdrs) is a Maven-based electronic disease surveillance system used in Washington State. WDRS is used to receive, process, track, and analyze data for 64+ notifiable conditions in Washington State, including COVID-19.</p>
+
+<p>WDRS is **Event-based**, where an Event is the association of a person with a disease at a point in time. For conditions like COVID-19, one person can be associated with multiple Events for the same condition. A person can also be associated with Events for multiple conditions tracked through WDRS.</p>
+
+<p>Sequencing data submitted to WA DOH come in with varying formats, including secure file transfer of comma-separated values files and ELR. Data are ingested into a workflow which outputs a roster to populate a Question Package in WDRS. This Question Package is associated at the Event-level. After ELR data are standardized and imported into the Question Package, these data will exist as a lab result (@fig-elr) associated with the Event *and* as an instance of the Question Package (@fig-qp).</p>
+
+<p>Sequencing ELRs are associated with Events in a similar format that any other test results would be. A new lab is created which contains the HL7 message, standardized and reformatted to fit in the WDRS data structures. This visual shows an example of part of an ELR residing in the WDRS frontend:</p>
+
+![ELR Data in WDRS](../images/example_elr_frontend.png){#fig-elr fig-align="center"}
+
+<p>To make data more usable for disease investigators and genetic epidemiologists, these data are moved to a Question Package in WDRS, which is linked to the Event. Question Packages are customization by WDRS developers at WA DOH and contain sets of questions related to a variety of topics from Occupation and Industry to Molecular Genetics. Sequencing metadata are stored in one Question Package. Values stored there include GISAID/NCBI virus names and accession numbers, lineages[^1], specimen collection dates, sequencing lab names, and clinical accessions[^2]. This visual shows an example of sequencing metadata stored in a Question Package in the WDRS frontend:</p>
+
+[^1]: Lineages are prone to change over time. There are workflows in place to compare lineages stored in WDRS with GISAID/NCBI, and update changed lineage calls.
+
+[^2]: Clinical accessions are often a filler order number that is shared between a sequencing result and a diagnostic test result. While Test Results and Question Packages that hold sequencing metadata are both linked to the same Event, sequencing metadata is not explicitly linked to a specific specimen. This value provides a way to determine which diagnostic and sequencing results share the same specimen.
+
+![Question Package Data in WDRS](../images/example_qp_frontend.png){#fig-qp fig-align="center"}
+
+<p>Reporting sequencing data to WA DOH via ELR is preferable to other methods because it should enter WDRS already associated with an existing or new Event. Data sent via ELR are linked to existing Events and Persons based on a variety of identifiers (First Name, Last Name, Date of Birth, Social Security Number, etc.) and workflows (automated matching & manual review).</p>

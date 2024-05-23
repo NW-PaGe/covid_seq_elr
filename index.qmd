@@ -1,0 +1,41 @@
+---
+title: "Overview"
+---
+
+This website gives an overview of how COVID-19 sequencing metadata are transmitted to the Washington State Department of Health (WA DOH) via Electronic Lab Reporting (ELR) and stored in one of Washington's disease surveillance systems.
+
+-   [**Overview**](index.qmd) gives an overview of ELR data submitted by labs to WA DOH
+
+-   [**Strengths & Challenges**](pages/strengths.qmd) evaluates the different reporting methods used at WA DOH for sequencing metadata
+
+-   [**Data Flow**](pages/flow.qmd) describes a high-level overview of how data travel from sequencing labs to surveillance system end-users
+
+-   [**WDRS**](pages/wdrs.qmd) explains where sequencing metadata live inside the Washington Disease Reporting System
+
+-   [**DRIVE**](pages/drive.qmd) details DRIVE processing and how KOPs are assigned to messages/MIFs
+
+-   [**Example Data**](pages/example.qmd) shows the data structure of sequencing metadata submitted to WA DOH via ELR
+
+-   [**Federal Guidance**](pages/guidance.qmd) lists recommendations from national public health organizations around sequencing ELR's
+
+\
+
+**ELR onboarding dates:**
+
+-   **LabCorp**: September 2021
+-   **Quest**: September 2021
+-   **Helix**: October 2021
+-   **Aegis**: February 2022 (submissions ended April 2023)
+-   **UW**: January 2023
+\
+\
+
+::: columns
+::: column
+![COVID Sequencing ELRs by Lab](images/elr_submission_counts.png){fig-align="left" width="530"}
+:::
+
+::: column
+![COVID Sequencing ELRs by Lab](images/elr_submission_counts_cumulative_line.gif){fig-align="right" width="530"}
+:::
+:::

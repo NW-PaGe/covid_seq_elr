@@ -1,0 +1,133 @@
+---
+title: "Data Flow"
+---
+
+**Data flow**: Samples are sequenced by the same lab that conducted diagnostic testing *or* by a different lab. Labs then report results to WA DOH directly *or* to APHL who then send results to WA DOH.
+Select other "PHL" or "SFT" to view simplified flow diagrams for how data submitted via these modes enter WDRS.
+\
+
+::: {layout="[40,60]"}
+
+```{ojs}
+//| echo: false
+
+{
+  if(mode=="ELR") {
+    return mermaid`
+    %%{ init: { 'flowchart': { 'curve': 'monotoneY' }, 'theme':'base', 'themeVariables': {'primaryColor': '#eff6f3', 'primaryTextColor': '#6a6a6a', 'primaryBorderColor': '#6a6a6a', 'lineColor': '#f3969a', 'secondaryColor': '#eff6f3'}} }%%
+    flowchart TD
+    d_lab(Diagnostic Lab) --> s_lab(Sequencing Lab)
+    s_lab & lab(Diagnostic & Sequencing Lab) --> aphl(APHL) 
+    s_lab --> pre[[Pre-processor]]
+    aphl --> pre
+    lab --> pre
+    pre --> welrs[(WELRS)] --> drive[[DRIVE]] --> post[[Post-processor]] --> wdrs[(WDRS)]
+    post --> welrs
+    wdrs --> diqa{{"Data Integration Pipeline:
+    - Data Reformatting
+    - Public Repo (NCBI/GISAID) Linkage
+    - QA"}}
+    diqa --> |"Question 
+    Package 
+    Update"| wdrs`
+  }
+  
+  if(mode=="PHL") {
+    return mermaid`
+    %%{ init: { 'flowchart': { 'curve': 'monotoneY' }, 'theme':'base', 'themeVariables': {'primaryColor': '#eff6f3', 'primaryTextColor': '#6a6a6a', 'primaryBorderColor': '#6a6a6a', 'lineColor': '#f3969a', 'secondaryColor': '#eff6f3'}} }%%
+    flowchart TD
+    d_lab(Diagnostic Lab) 
+    d_phl[/PHL Diagnostic/] 
+    d_lab & d_phl --> s_phl[/PHL Sequencing/]
+    s_phl --> lims[(LIMS)] --> web[/Data Dashboard/]
+    web --> diqa{{"Data Integration Pipeline:
+    - <i>Case linkage</i>
+    - Data Reformatting
+    - Public Repo (NCBI/GISAID) Linkage
+    - QA"}}
+    diqa --> |"Question 
+    Package 
+    Update"| wdrs[(WDRS)]`
+  }
+  
+  if(mode=="SFT") {
+    return mermaid`
+    %%{ init: { 'flowchart': { 'curve': 'monotoneY' }, 'theme':'base', 'themeVariables': {'primaryColor': '#eff6f3', 'primaryTextColor': '#6a6a6a', 'primaryBorderColor': '#6a6a6a', 'lineColor': '#f3969a', 'secondaryColor': '#eff6f3'}} }%%
+    flowchart TD
+    d_lab(Diagnostic Lab) --> s_lab(Sequencing Lab)
+    s_lab & lab(Diagnostic & Sequencing Lab) --> sft[/SFT Host/]
+    sft --> diqa{{"Data Integration Pipeline:
+    - <i>Case linkage</i>
+    - Data Reformatting
+    - Public Repo (NCBI/GISAID) Linkage
+    - QA"}}
+    diqa --> |"Question 
+    Package 
+    Update"| wdrs[(WDRS)]`
+  }
+}
+```
+
+::: column
+```{ojs}
+//| panel: input
+//| echo: false
+
+viewof mode = Inputs.radio(["ELR", "PHL", "SFT"], {value: "ELR", label: "Select mode:"})
+ 
+```
+#### Descriptions:
+```{=html}
+<details>
+  <summary><b>Sequencing Result Sources</b>: Public Health, Academic, and Private Laboratories</summary>
+  <div style="margin-left:5%;background:#E9E2F3">Sequencing results are transmitted to WA DOH via ELR originating from various sources:
+  <ul>
+    <li>The transmitting lab may be the lab that conducted diagnostic testing (e.g.: PCR) <i>and</i> sequencing (<b>Diagnostic & Sequencing Lab</b>).</li>
+    <li>The transmitting lab may also have <i>only</i> done sequencing on a sample (<b>Sequencing Lab</b>), while the diagnostic testing was performed by another lab before being sent for sequencing (<b>Diagnostic Lab</b>).</li>
+    <li>The transmitting lab may be <b>APHL</b>, who receive sequencing results from a lab (sometimes as a linelist) and then forward results to WA DOH in HL7 formatting.</li></div>
+  
+</details>
+<hr>
+<details>
+<summary><b>WELRS</b>: Washington Electronic Lab Reporting System</summary>
+<div style="margin-left:5%;background:#E9E2F3"><p><a href="https://doh.wa.gov/public-health-healthcare-providers/healthcare-professions-and-facilities/data-exchange/electronic-laboratory-reporting-elr" target="_blank">WELRS</a> is the database for all electronically-received lab reports, for all conditions. Incoming ELRs are processed, certain standardized values (such as "Health Condtion") are assigned, and the messages are converted from HL7 to XML formatting.</p>
+</div>
+</details>
+<hr>
+<details>
+<summary><b>DRIVE</b>: Disease Reporting and Interoperability Verification Engine</summary>
+<div style="margin-left:5%;background:#E9E2F3"><p>DRIVE is a Rhapsody-based system that performs the middleware processing of ELRs between WELRS and WDRS. DRIVE reformats data and standardizes values for the widely varying information received from different reporting laboratories, and sends ELRs on to WDRS for workflow processing and end-user evaluation.</p>
+</div>
+</details>
+<hr>
+<details>
+<summary><b>WDRS</b>: Washington Disease Reporting System</summary>
+<div style="margin-left:5%;background:#E9E2F3">
+<p><a href="https://doh.wa.gov/public-health-healthcare-providers/public-health-system-resources-and-services/wdrs" target="_blank">WDRS</a> is a Maven-based electronic disease surveillance system used in Washington State. WDRS is used to receive, process, track, and analyze data for 64+ notifiable conditions in Washington State, including COVID-19.</p>
+<p>WDRS is Event-based, where an Event is the association of a person with a disease at a point in time. For conditions like COVID-19, one person can be associated with multiple Events for the same condtion. A person can also be associated with Events for multiple conditions tracked through WDRS.</p>
+<p>See the <a href="wdrs.qmd">WDRS Sequencing Data</a> page for more details about Question Package updates and storage of SARS-CoV-2 sequencing data in WDRS.</p>
+</div>
+</details>
+<hr>
+```
+
+#### Legend:
+
+```{ojs}
+mermaid`
+    %%{ init: { 'flowchart': { 'curve': 'monotoneY' }, 'theme':'base', 'themeVariables': {'primaryColor': '#eff6f3', 'primaryTextColor': '#6a6a6a', 'primaryBorderColor': '#6a6a6a', 'lineColor': '#f3969a', 'secondaryColor': '#eff6f3'}} }%%
+flowchart TD
+    ext(External Data Owner) 
+    doh[/Internal Data Owner/]`
+```
+
+```{ojs}
+mermaid`
+%%{ init: { 'flowchart': { 'curve': 'monotoneY' }, 'theme':'base', 'themeVariables': {'primaryColor': '#eff6f3', 'primaryTextColor': '#6a6a6a', 'primaryBorderColor': '#6a6a6a', 'lineColor': '#f3969a', 'secondaryColor': '#eff6f3'}} }%%
+flowchart TD
+    proc[["Data processing (software)"]]
+    script{{"Data processing (scripts)"}}
+    db[(Database)]` 
+```
+:::
+:::

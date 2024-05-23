@@ -1,0 +1,43 @@
+project:
+  type: website
+
+website:
+  title: "Sequencing ELR"
+  navbar:
+      left:
+        - href: index.qmd
+          text: Overview
+        - pages/strengths.qmd
+        - pages/flow.qmd
+        - pages/wdrs.qmd
+        - pages/drive.qmd
+        - pages/example.qmd
+        - pages/guidance.qmd
+      right: 
+        - icon: github
+          href: https://github.com/DOH-EPI-Coders/Sequencing_ELR
+          target: _blank
+        - icon: envelope
+          href: mailto:DOH.CDS.GenSeqSurvDQ@doh.wa.gov
+          target: _blank
+        - icon: house-heart
+          href: https://doh.wa.gov
+          target: _blank
+      logo: images/logo.png
+      link-external-newwindow: true
+          
+format:
+  html:
+    theme: minty
+    backgroundcolor: "#fdfcfb"
+    css: styles.css
+    toc: true
+    page-layout: full
+    smooth-scroll: true
+    link-external-icon: false
+    link-external-newwindow: true
+    link-external-filter: '^(?:http:|https:)\/\/https://cautious-chainsaw-1w342kr'
+    highlight-style: dracula
+
+execute:
+  freeze: auto

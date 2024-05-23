@@ -1,0 +1,88 @@
+---
+title: "Stengths & Challenges"
+---
+
+ELR sequencing submissions have unique strengths and challenges due to the systems involved (and not involved) in generating the HL7 messages, as well as their integration with established surveillance systems at WA DOH. Comparing ELR with other sequencing metadata submission modes highlights some of these strengths and challenges:
+
+::: {layout-ncol="3"}
+::: column
+#### ELR
+
+<b>[Strengths:]{style="color: #969f84"}</b>
+
+::: {style="background-color: #bac0ae"}
+-   Linkage to WDRS Event completed upstream
+-   WDRS Event automatically created if no Event linked
+-   Person demographics (should be) included
+-   Mostly timely reporting
+-   Data available in WDRS outside of Question Package
+:::
+
+<b>[Challenges:]{style="color: #96677E"}</b>
+
+::: {style="background-color: #cbb3bf"}
+-   DIQA cannot alter how WDRS Event linkage is done
+-   Difficult to onboard labs
+-   Difficult to get labs to change data structure for reported records
+-   Data structure dependent on HL7 versioning and requirements from external groups
+-   Multiple labs submitting with data reported in multiple structures
+:::
+:::
+
+::: column
+#### PHL
+
+<b>[Strengths:]{style="color: #969f84"}</b>
+
+::: {style="background-color: #bac0ae"}
+-   Linkage to WDRS Event is directly controlled by DIQA
+-   Mostly timely reporting
+-   One lab submitting; consistent data structure
+:::
+
+<b>[Challenges:]{style="color: #96677E"}</b>
+
+::: {style="background-color: #cbb3bf"}
+-   Linkage to WDRS Event must be coded by DIQA
+-   WDRS Event must be manually created if no Event linked
+-   Person demographics may not be included
+-   Difficult to get PHL dashboard created
+-   PHL reliant on a separate dashboarding team to make dashboard changes
+-   Reliant on Selenium and prone to breaking with Chrome or page HTML updates
+-   Data are not found in WDRS outside of Question Package
+:::
+:::
+
+::: column
+#### Secure File Transfer
+
+<b>[Strengths:]{style="color: #969f84"}</b>
+
+::: {style="background-color: #bac0ae"}
+-   Linkage to WDRS Event is directly controlled by DIQA
+-   Less difficult for labs to change data structure for reported records
+-   Multiple labs submitting with data reported in a consistent structure
+:::
+
+<b>[Challenges:]{style="color: #96677E"}</b>
+
+::: {style="background-color: #cbb3bf"}
+-   Linkage to WDRS Event must be coded by DIQA
+-   WDRS Event must be manually created if no Event linked
+-   Person demographics may not be included
+-   Difficult to onboard labs
+-   Reliant on Selenium and prone to breaking with Chrome or page HTML updates
+-   Reporting is often done in batches and is delayed
+-   Data are not found in WDRS outside of Question Package
+:::
+:::
+:::
+
+::: columns
+::: column
+![](../images/all_submission_count_year.png){width="100%"}
+:::
+::: column
+![](../images/all_submission_prop_year.png){width="100%"}
+:::
+:::
