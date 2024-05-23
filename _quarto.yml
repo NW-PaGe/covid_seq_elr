@@ -15,7 +15,7 @@ website:
         - pages/guidance.qmd
       right: 
         - icon: github
-          href: https://github.com/DOH-EPI-Coders/Sequencing_ELR
+          href: https://github.com/NW-PaGe/covid_seq_elr
           target: _blank
         - icon: envelope
           href: mailto:DOH.CDS.GenSeqSurvDQ@doh.wa.gov
@@ -36,5 +36,5 @@ format:
     smooth-scroll: true
     link-external-icon: false
     link-external-newwindow: true
-    link-external-filter: '^(?:http:|https:)\/\/https://cautious-chainsaw-1w342kr'
+    link-external-filter: '^.*nw-page.github.io.*|^.*NW-PaGe.github.io.*'
     highlight-style: dracula
