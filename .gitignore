@@ -52,5 +52,15 @@ rsconnect/
 /.quarto/
 /_site/
 
+# data
+*.csv
+*.rds
+# except as specified
+!example_df.csv
+!example_df.rds
+
+# Scripts dir
+scripts/
+
 # Secrets
 secrets_key
