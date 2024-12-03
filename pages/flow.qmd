@@ -114,6 +114,8 @@ viewof mode = Inputs.radio(["ELR", "PHL", "SFT"], {value: "ELR", label: "Select 
 #### Legend:
 
 ```{ojs}
+//| echo: false
+
 mermaid`
     %%{ init: { 'flowchart': { 'curve': 'monotoneY' }, 'theme':'base', 'themeVariables': {'primaryColor': '#eff6f3', 'primaryTextColor': '#6a6a6a', 'primaryBorderColor': '#6a6a6a', 'lineColor': '#f3969a', 'secondaryColor': '#eff6f3'}} }%%
 flowchart TD
@@ -122,6 +124,8 @@ flowchart TD
 ```
 
 ```{ojs}
+//| echo: false
+
 mermaid`
 %%{ init: { 'flowchart': { 'curve': 'monotoneY' }, 'theme':'base', 'themeVariables': {'primaryColor': '#eff6f3', 'primaryTextColor': '#6a6a6a', 'primaryBorderColor': '#6a6a6a', 'lineColor': '#f3969a', 'secondaryColor': '#eff6f3'}} }%%
 flowchart TD
