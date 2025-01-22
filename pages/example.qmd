@@ -140,7 +140,7 @@ example_temp %>%
 :::
 
 ::: right-align
-Raw data set: [![](../images/download_icon_csv_invert.png){width="44"}](https://github.com/DOH-EPI-Coders/Sequencing_ELR_sanitized/raw/main/data/example_df.csv){target="_blank"} [![](../images/download_icon_rds_invert.png){width="44"}](https://github.com/Sequencing_ELR_sanitized/raw/main/data/example_df.rds){target="_blank"}
+Raw data set: [![](../images/download_icon_csv_invert.png){width="44"}](https://github.com/NW-PaGe/covid_seq_elr/raw/main/data/example_df.csv){target="_blank"} [![](../images/download_icon_rds_invert.png){width="44"}](https://github.com/NW-PaGe/covid_seq_elr/raw/main/data/example_df.rds){target="_blank"}
 :::
 
 \
