@@ -48,19 +48,25 @@ po/*~
 # RStudio Connect folder
 rsconnect/
 
-# Quarto
-/.quarto/
+# Quarto rendered files
+.quarto/
 /_site/
 
-# data
-*.csv
+# Output Data files
 *.rds
-# except as specified
-!example_df.csv
-!example_df.rds
+*.csv
+!data/example_df.rds
+!data/example_df.csv
+!data/example_hl7.csv
+!data/example_hl7.rds
+!data/example_hl7_viz.csv
 
-# Scripts dir
+# Scripts dir and code
 scripts/
+hl7_example_data_generation.R
 
 # Secrets
 secrets_key
+creds.yml
+
+/.quarto/
