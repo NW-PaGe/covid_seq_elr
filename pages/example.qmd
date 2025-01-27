@@ -1,5 +1,7 @@
 ---
 title: "Example Data"
+filters:
+  - shinylive
 ---
 
 Below are examples of ELR submissions stored in the Washington Disease Reporting System (WDRS) replica database *ELR Entire* table. Data structure and formatting are real, while specific values are not.
@@ -15,7 +17,7 @@ Values are color-coded to reflect the piece of sequencing metadata they correspo
 -   **Clinical accessions**. This is the value used to link a sequencing result to a specific specimen and/or lab test. This is usually submitted as the filler order number. However, a variety of factors can influence where these data might be in ELR submissions, such as which lab is submitting the sequencing results to WA DOH and whether the same or different labs conducted the diagnostic and sequencing tests.
 
 ::: column-page
-```{r}
+```{r read_wdrs_example}
 #| echo: false
 #| warning: false
 example <- readRDS('../data/example_df.rds')
@@ -23,7 +25,7 @@ example[is.na(example)] <- ''
 
 ```
 
-```{r}
+```{r format_display_wdrs_example}
 #| echo: false
 #| warning: false
 #| results: asis
@@ -121,9 +123,9 @@ example_temp %>%
   # remove submitter row (this gets added later as a label as part of pack_rows)
   select(-SUBMITTER) %>% 
   # create kable with caption
-  kable(caption = '<strong>ELR Example Data</strong>', escape = F) %>% 
+  kable(format = 'html', caption = '<strong>ELR Example Data</strong>', escape = F) %>% 
   # specify kable formatting
-  kable_classic() %>%
+  kable_classic(full_width=TRUE) %>%
   # change formatting of headers
   row_spec(0, bold = TRUE, font_size = 14) %>% 
   # Change row for every other case_id to have gray background 
@@ -133,7 +135,7 @@ example_temp %>%
             label_row_css = 'text-align:center;',
             hline_before = T,
             hline_after = T,
-            background = '#C3B1E1') %>% 
+            background = '#D0C7E1') %>% 
   # Create scroll box out of table so we don't have an too long or wide of a table
   scroll_box(height = '600px', width = '100%', fixed_thead = list(enabled = T, background = "#C3B1E1"))
 ```
@@ -145,9 +147,43 @@ Raw data set: [![](../images/download_icon_csv_invert.png){width="44"}](https://
 
 \
 
-```{r}
+```{r legend}
 #| echo: false
 #| results: asis
 
 kables(list(kable(color_legend, caption = '<strong>Key</strong>', escape = F), kable(name_legend, caption = '<strong>Abbreviated Variable Names</strong>')))
 ```
+
+
+::: {.callout-warning}
+The HL7 content below is under construction. Links and data display may be broken and/or change.
+:::
+
+::: column-page
+```{shinylive-r}
+#| standalone: true
+#| viewerHeight: 650
+
+library(shiny)
+
+# import custom hl7 funs
+{{< include "../src/hl7_processing_funs.R" >}}
+
+# read in data from public github
+viz_df <- read.csv(url("https://raw.githubusercontent.com/NW-PaGe/covid_seq_elr/refs/heads/main/data/example_hl7_viz.csv"))
+
+# import ui code
+{{< include "../src/hl7_shiny_ui.R" >}}
+
+# import server code
+{{< include "../src/hl7_shiny_server.R" >}}
+
+# Create shiny app w/shinylive
+shinyApp(ui, server)
+
+```
+:::
+
+::: right-align
+Raw data set: [![](../images/download_icon_csv_invert.png){width="44"}](https://github.com/NW-PaGe/covid_seq_elr/raw/main/data/example_hl7.csv){target="_blank"} [![](../images/download_icon_rds_invert.png){width="44"}](https://github.com/NW-PaGe/covid_seq_elr/raw/main/data/example_hl7.rds){target="_blank"}
+:::
