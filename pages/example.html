@@ -155,8 +155,16 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#wdrs" id="toc-wdrs" class="nav-link" data-scroll-target="#wdrs">WDRS Example Data</a></li>
+  <li><a href="#hl7" id="toc-hl7" class="nav-link" data-scroll-target="#hl7">HL7 Example Data</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content page-columns page-full column-body" id="quarto-document-content">
@@ -180,6 +188,8 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="overview" class="level3">
+<h3 class="anchored" data-anchor-id="overview">Overview</h3>
 <p>Below are examples of ELR submissions stored in the Washington Disease Reporting System (WDRS) replica database <em>ELR Entire</em> table. Data structure and formatting are real, while specific values are not.</p>
 <p>This table is intended to give a visual of how data are structured at the end of the process from sequencing by external labs to HL7 messaging and finally storage of sequencing metadata in WA DOH’s COVID-19 surveillance system.</p>
 <p>Values are color-coded to reflect the piece of sequencing metadata they correspond to:</p>
@@ -188,6 +198,9 @@ ul.task-list li input[type="checkbox"] {
 <li><p><a href="https://www.pango.network/" target="_blank"><strong>Pango</strong></a> <strong>lineages</strong></p></li>
 <li><p><strong>Clinical accessions</strong>. This is the value used to link a sequencing result to a specific specimen and/or lab test. This is usually submitted as the filler order number. However, a variety of factors can influence where these data might be in ELR submissions, such as which lab is submitting the sequencing results to WA DOH and whether the same or different labs conducted the diagnostic and sequencing tests.</p></li>
 </ul>
+</section>
+<section id="wdrs" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="wdrs">WDRS Example Data</h3>
 <div class="column-page">
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:600px; overflow-x: scroll; width:100%; ">
 <table class="lightable-classic caption-top table" data-quarto-postprocess="true">
@@ -607,6 +620,9 @@ Warning
 <p>The HL7 content below is under construction. Links and data display may be broken and/or change.</p>
 </div>
 </div>
+</section>
+<section id="hl7" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="hl7">HL7 Example Data</h3>
 <div class="column-page">
 <pre class="shinylive-r" data-engine="r"><code>#| '!! shinylive warning !!': |
 #|   shinylive does not work in self-contained HTML documents.
@@ -1233,6 +1249,7 @@ shinyApp(ui, server)
 </div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
