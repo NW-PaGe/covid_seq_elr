@@ -6,8 +6,8 @@ ui <- fluidPage(
       radioButtons(
         inputId = "display_format",
         label = "View as:",
-        choices = c("String"="String", "Table"="Table"),
-        selected = "String",
+        choices = c("Table"="Table", "String"="String"),
+        selected = "Table",
         inline = TRUE  # Display radio buttons horizontally
       )
     ),
@@ -18,5 +18,6 @@ ui <- fluidPage(
     )
   ),
   tags$hr(style = "border-top: 2px solid #000000; margin: 5px 0;"),  # Adjust margin size before/after hr
-  htmlOutput("table_output") # Use htmlOutput for rendering HTML strings
+  DT::DTOutput("hl7_table"),
+  htmlOutput("hl7_string")
 )

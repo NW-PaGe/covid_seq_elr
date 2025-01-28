@@ -38,8 +38,15 @@ if (FALSE) {
 #   clin_acc_quest_uw_mask <- submitter %in% c('Quest', 'UW') & example_tbl$Value %in% example_tbl$Value[example_tbl$Position %in% 'SPM-2.1.1']
 #   clin_acc_mask <- clin_acc_labcorp_mask | clin_acc_quest_uw_mask
 #   
-#   example_tbl$Value[!(lineage_mask | strain_mask | clin_acc_mask)] <- gsub('[^\\s]', 'x', example_tbl$Value[!(lineage_mask | strain_mask | clin_acc_mask)])
-# 
+#   v_mask <- example_tbl$Position=="MSH-12"
+#   v <-  example_tbl$Value[v_mask]
+#   seps_mask <- example_tbl$Position=="MSH-2"
+#   seps <-  example_tbl$Value[seps_mask]
+#   example_tbl$Value[!(lineage_mask | strain_mask | clin_acc_mask)] <- gsub('[^\\s]', 'x', example_tbl$Value[!(lineage_mask | strain_mask | clin_acc_mask)], perl=T)
+#   example_tbl$Value[example_tbl$Position=="MSH-1"] <- "MSH"
+#   example_tbl$Value[seps_mask] <- seps
+#   example_tbl$Value[v_mask] <- v
+#   
 #   hl7_messages$hl7_table[[i]] <- example_tbl
 # 
 # }
