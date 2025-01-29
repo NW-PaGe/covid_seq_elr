@@ -5,8 +5,6 @@ server <- function(input, output, session) {
   selection <- reactive({
     viz_df$Name == input$selected_table
   })
-  # Render the selected kable table
-  
   output$hl7_string <- renderText({
     if (input$display_format == "String") {
       HTML(viz_df$String[selection()])
@@ -27,7 +25,7 @@ server <- function(input, output, session) {
       example_tbl$Segment <- as.factor(example_tbl$Segment)
       # Create searchCols list dynamically
       searchCols_val <- vector("list", ncol(example_tbl)) # add one because row names are included at front
-      searchCols_val[[which(names(example_tbl) == 'Value')]] <- list(search = 'strain|accession|lineage')
+      #searchCols_val[[which(names(example_tbl) == 'Value')]] <- list(search = 'strain|accession|lineage')
       
       DT::datatable(
         example_tbl,
@@ -36,7 +34,7 @@ server <- function(input, output, session) {
           "RowGroup", # allows for grouping of rows by col
           "FixedHeader", # allows for fixing headers during vertical scroll
           "Buttons" # allows for built-in copy/csv/print/pdf/colvis buttons
-          ),  
+        ),  
         escape = FALSE, # Allow tool tips labels in html
         filter = "top", # Add filters to top of table
         selection = list(mode="multiple", target="row+column"), # make 
@@ -51,7 +49,42 @@ server <- function(input, output, session) {
             list(targets = which(names(example_tbl) == "Segment") - 1, visible = FALSE)  # Hide "Segment" column
           ),
           dom = "Bfrtip",  # Include Buttons in the table UI, for some reason Buttons is not working if only includes in `extensions`
-          buttons = c("copy")
+          buttons = list(
+            list(
+              extend = 'collection',
+              text = "View Sequencing Only",
+              action = DT::JS("
+                                function (e, dt, node, config) {
+                                  // Define the regex pattern for filtering
+                                  var pattern = /strain|accession|lineage/i;
+                                  // Clear any existing column filter for the column of interest
+                                  dt.column(3).search('');
+                                  // Apply the regex filter to the column
+                                  dt.column(3).search(pattern.source, true, false).draw();
+                                }
+                              ")
+            ),
+            list(
+              extend = 'collection',
+              text = 'View ALL',
+              action = DT::JS("
+                                function (e, dt, node, config) {
+                                  // Clear any filters applied to the column
+                                  dt.column(3).search('').draw();
+                                 }
+                              ")
+            )
+          ),
+          initComplete = DT::JS(
+            "function(settings, json) {",
+            # Automatically apply the sequencing only filter
+            "var table = this.api();",
+            "var pattern = /strain|accession|lineage/i;",
+            "table.column(3).search(pattern.source, true, false).draw();",
+            #  Change header color
+            "$(this.api().table().header()).css({'background-color': '#C3B1E1'});",
+            "}"
+          )
         )
       )
     } else {
