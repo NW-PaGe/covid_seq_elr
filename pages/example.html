@@ -1152,6 +1152,22 @@ viz_df &lt;- read.csv(url("https://raw.githubusercontent.com/NW-PaGe/covid_seq_e
 
 # import ui code
 ui &lt;- fluidPage(
+  # Custom CSS tags to adjust DT button colors
+  tags$style(HTML("
+    /* Change the background color and text color of the dt buttons */
+    .dt-buttons .dt-button.buttons-collection {
+      background-color: #78c2ad !important;  /* Mint color for the button */
+      color: white  !important;  /* White text */
+      border: none  !important;  /* No border */
+    }
+    
+    /* On hover, change the background color */
+    .dt-buttons .dt-button.buttons-collection:hover {
+      background-color: #66a593 !important;  /* Darker mint when hovered */
+      color: white  !important;  /* White text */
+      border: none  !important;  /* No border */
+    }
+  ")),
   titlePanel("HL7 Viewer"),
   fluidRow(
     column(
@@ -1184,8 +1200,6 @@ server &lt;- function(input, output, session) {
   selection &lt;- reactive({
     viz_df$Name == input$selected_table
   })
-  # Render the selected kable table
-  
   output$hl7_string &lt;- renderText({
     if (input$display_format == "String") {
       HTML(viz_df$String[selection()])
@@ -1206,7 +1220,7 @@ server &lt;- function(input, output, session) {
       example_tbl$Segment &lt;- as.factor(example_tbl$Segment)
       # Create searchCols list dynamically
       searchCols_val &lt;- vector("list", ncol(example_tbl)) # add one because row names are included at front
-      searchCols_val[[which(names(example_tbl) == 'Value')]] &lt;- list(search = 'strain|accession|lineage')
+      #searchCols_val[[which(names(example_tbl) == 'Value')]] &lt;- list(search = 'strain|accession|lineage')
       
       DT::datatable(
         example_tbl,
@@ -1215,7 +1229,7 @@ server &lt;- function(input, output, session) {
           "RowGroup", # allows for grouping of rows by col
           "FixedHeader", # allows for fixing headers during vertical scroll
           "Buttons" # allows for built-in copy/csv/print/pdf/colvis buttons
-          ),  
+        ),  
         escape = FALSE, # Allow tool tips labels in html
         filter = "top", # Add filters to top of table
         selection = list(mode="multiple", target="row+column"), # make 
@@ -1230,7 +1244,42 @@ server &lt;- function(input, output, session) {
             list(targets = which(names(example_tbl) == "Segment") - 1, visible = FALSE)  # Hide "Segment" column
           ),
           dom = "Bfrtip",  # Include Buttons in the table UI, for some reason Buttons is not working if only includes in `extensions`
-          buttons = c("copy")
+          buttons = list(
+            list(
+              extend = 'collection',
+              text = "View Sequencing Only",
+              action = DT::JS("
+                                function (e, dt, node, config) {
+                                  // Define the regex pattern for filtering
+                                  var pattern = /strain|accession|lineage/i;
+                                  // Clear any existing column filter for the column of interest
+                                  dt.column(3).search('');
+                                  // Apply the regex filter to the column
+                                  dt.column(3).search(pattern.source, true, false).draw();
+                                }
+                              ")
+            ),
+            list(
+              extend = 'collection',
+              text = 'View ALL',
+              action = DT::JS("
+                                function (e, dt, node, config) {
+                                  // Clear any filters applied to the column
+                                  dt.column(3).search('').draw();
+                                 }
+                              ")
+            )
+          ),
+          initComplete = DT::JS(
+            "function(settings, json) {",
+            # Automatically apply the sequencing only filter
+            "var table = this.api();",
+            "var pattern = /strain|accession|lineage/i;",
+            "table.column(3).search(pattern.source, true, false).draw();",
+            #  Change header color
+            "$(this.api().table().header()).css({'background-color': '#C3B1E1'});",
+            "}"
+          )
         )
       )
     } else {
