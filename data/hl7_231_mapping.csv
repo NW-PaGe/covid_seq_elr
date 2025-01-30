@@ -1,0 +1,985 @@
+﻿Segment,Field,Field_Name,Component,Component_Name,Subcomponent,Subcomponent_Name
+BHS,1,Batch Field Separator,,,,
+BHS,2,Batch Encoding Characters,,,,
+BHS,3,Batch Sending Application,,,,
+BHS,4,Batch Sending Facility,,,,
+BHS,5,Batch Receiving Application,,,,
+BHS,6,Batch Receiving Facility,,,,
+BHS,7,Batch Creation Date/Time,,,,
+BHS,8,Batch Security,,,,
+BHS,9,Batch Name/ID/Type,,,,
+BHS,10,Batch Comment,,,,
+BHS,11,Batch Control ID,,,,
+BHS,12,Reference Batch Control ID,,,,
+BTS,1,Batch Message Count,,,,
+BTS,2,Batch Comment,,,,
+BTS,3,Batch Totals,,,,
+DSC,1,Continuation Pointer,,,,
+ERR,1,Error Code and Location,1,Segment ID,,
+ERR,1,Error Code and Location,2,Sequence,,
+ERR,1,Error Code and Location,3,Field Position,,
+ERR,1,Error Code and Location,4,Code Identifying Error,,
+MSH,1,Field Separator,,,,
+MSH,2,Encoding Characters,,,,
+MSH,3,Sending Application,1,Namespace ID,,
+MSH,3,Sending Application,2,Universal ID,,
+MSH,3,Sending Application,3,Universal ID Type,,
+MSH,4,Sending Facility,1,Namespace ID,,
+MSH,4,Sending Facility,2,Universal ID,,
+MSH,4,Sending Facility,3,Universal ID Type,,
+MSH,5,Receiving Application,1,Namespace ID,,
+MSH,5,Receiving Application,2,Universal ID,,
+MSH,5,Receiving Application,3,Universal ID Type,,
+MSH,6,Receiving Facility,1,Namespace ID,,
+MSH,6,Receiving Facility,2,Universal ID,,
+MSH,6,Receiving Facility,3,Universal ID Type,,
+MSH,7,Date/Time Of Message,,,,
+MSH,8,Security,,,,
+MSH,9,Message Type,1,Message Type,,
+MSH,9,Message Type,2,Trigger Event,,
+MSH,9,Message Type,3,Message Structure,,
+MSH,10,Message Control ID,,,,
+MSH,11,Processing ID,1,Processing ID,,
+MSH,11,Processing ID,2,Processing Mode,,
+MSH,12,Version ID,1,Version ID,,
+MSH,12,Version ID,2,Internationalization Code,,
+MSH,12,Version ID,3,International Version ID,,
+MSH,13,Sequence Number,,,,
+MSH,14,Continuation Pointer,,,,
+MSH,15,Accept Acknowledgment Type,,,,
+MSH,16,Application Acknowledgment Type,,,,
+MSH,17,Country Code,,,,
+MSH,18,Character Set,,,,
+MSH,19,Principal Language Of Message,1,Identifier,,
+MSH,19,Principal Language Of Message,2,Text,,
+MSH,19,Principal Language Of Message,3,Name of Coding System,,
+MSH,19,Principal Language Of Message,4,Alternate Identifier,,
+MSH,19,Principal Language Of Message,5,Alternate Text,,
+MSH,19,Principal Language Of Message,6,Name of Alternate Coding System,,
+MSH,20,Altemate Character Set Handling Scheme,,,,
+NTE,1,Set ID - NTE,,,,
+NTE,2,Source of Comment,,,,
+NTE,3,Comment,,,,
+NTE,4,Comment Type,,,,
+PID,1,Set ID - PID,,,,
+PID,2,Patient ID,1,ID Number,,
+PID,2,Patient ID,2,Check Digit,,
+PID,2,Patient ID,3,Check Digit Scheme,,
+PID,2,Patient ID,4,Assigning Authority,1,Namespace ID
+PID,2,Patient ID,4,Assigning Authority,2,Universal ID
+PID,2,Patient ID,4,Assigning Authority,3,Universal ID Type
+PID,2,Patient ID,5,Identifier Type Code,,
+PID,2,Patient ID,6,Assigning Facility,1,Namespace ID
+PID,2,Patient ID,6,Assigning Facility,2,Universal ID
+PID,2,Patient ID,6,Assigning Facility,3,Universal ID Type
+PID,3,Patient Identifier List,1,ID Number,,
+PID,3,Patient Identifier List,2,Check Digit,,
+PID,3,Patient Identifier List,3,Check Digit Scheme,,
+PID,3,Patient Identifier List,4,Assigning Authority,1,Namespace ID
+PID,3,Patient Identifier List,4,Assigning Authority,2,Universal ID
+PID,3,Patient Identifier List,4,Assigning Authority,3,Universal ID Type
+PID,3,Patient Identifier List,5,Identifier Type Code,,
+PID,3,Patient Identifier List,6,Assigning Facility,1,Namespace ID
+PID,3,Patient Identifier List,6,Assigning Facility,2,Universal ID
+PID,3,Patient Identifier List,6,Assigning Facility,3,Universal ID Type
+PID,4,Alternate Patient ID - PID,1,ID Number,,
+PID,4,Alternate Patient ID - PID,2,Check Digit,,
+PID,4,Alternate Patient ID - PID,3,Check Digit Scheme,,
+PID,4,Alternate Patient ID - PID,4,Assigning Authority,1,Namespace ID
+PID,4,Alternate Patient ID - PID,4,Assigning Authority,2,Universal ID
+PID,4,Alternate Patient ID - PID,4,Assigning Authority,3,Universal ID Type
+PID,4,Alternate Patient ID - PID,5,Identifier Type Code,,
+PID,4,Alternate Patient ID - PID,6,Assigning Facility,1,Namespace ID
+PID,4,Alternate Patient ID - PID,6,Assigning Facility,2,Universal ID
+PID,4,Alternate Patient ID - PID,6,Assigning Facility,3,Universal ID Type
+PID,5,Patient Name,1,Family Name,1,Family Name
+PID,5,Patient Name,1,Family Name,2,Last Name Prefix
+PID,5,Patient Name,2,Given Name,,
+PID,5,Patient Name,3,Middle Initial or Name,,
+PID,5,Patient Name,4,"Suffix (e.g., JR or III)",,
+PID,5,Patient Name,5,"Prefix (e.g., DR)",,
+PID,5,Patient Name,6,"Degree (e.g., MD)",,
+PID,5,Patient Name,7,Name Type Code,,
+PID,5,Patient Name,8,Name Representation Code,,
+PID,6,Mother's Maiden Name,1,Family Name,1,Family Name
+PID,6,Mother's Maiden Name,1,Family Name,2,Last Name Prefix
+PID,6,Mother's Maiden Name,2,Given Name,,
+PID,6,Mother's Maiden Name,3,Middle Initial or Name,,
+PID,6,Mother's Maiden Name,4,"Suffix (e.g., JR or III)",,
+PID,6,Mother's Maiden Name,5,"Prefix (e.g., DR)",,
+PID,6,Mother's Maiden Name,6,"Degree (e.g., MD)",,
+PID,6,Mother's Maiden Name,7,Name Type Code,,
+PID,6,Mother's Maiden Name,8,Name Representation Code,,
+PID,7,Date/Time of Birth,,,,
+PID,8,Sex,,,,
+PID,9,Patient Alias,1,Family Name,1,Family Name
+PID,9,Patient Alias,1,Family Name,2,Last Name Prefix
+PID,9,Patient Alias,2,Given Name,,
+PID,9,Patient Alias,3,Middle Initial or Name,,
+PID,9,Patient Alias,4,"Suffix (e.g., JR or III)",,
+PID,9,Patient Alias,5,"Prefix (e.g., DR)",,
+PID,9,Patient Alias,6,"Degree (e.g., MD)",,
+PID,9,Patient Alias,7,Name Type Code,,
+PID,9,Patient Alias,8,Name Representation Code,,
+PID,10,Race,1,Identifier,,
+PID,10,Race,2,Text,,
+PID,10,Race,3,Name of Coding System,,
+PID,10,Race,4,Alternate Identifier,,
+PID,10,Race,5,Alternate Text,,
+PID,10,Race,6,Name of Alternate Coding System,,
+PID,11,Patient Address,1,Street Address,,
+PID,11,Patient Address,2,Other Designation,,
+PID,11,Patient Address,3,City,,
+PID,11,Patient Address,4,State or Province,,
+PID,11,Patient Address,5,Zip or Postal Code,,
+PID,11,Patient Address,6,Country Code,,
+PID,11,Patient Address,7,Address Type,,
+PID,11,Patient Address,8,Other Geographic Designation,,
+PID,11,Patient Address,9,County/Parish Code,,
+PID,11,Patient Address,10,Census Tract,,
+PID,11,Patient Address,11,Address Representation Code,,
+PID,12,County Code,,,,
+PID,13,Phone Number - Home,1,[NNN] [(999)]999-9999 [X99999] [B99999] [C any text],,
+PID,13,Phone Number - Home,2,Telecommunication Use Code,,
+PID,13,Phone Number - Home,3,Telecommunication Equipment Type,,
+PID,13,Phone Number - Home,4,Email Address,,
+PID,13,Phone Number - Home,5,Country Code,,
+PID,13,Phone Number - Home,6,Area/City Code,,
+PID,13,Phone Number - Home,7,Phone Number,,
+PID,13,Phone Number - Home,8,Extension,,
+PID,13,Phone Number - Home,9,Any Text,,
+PID,14,Phone Number - Business,1,[NNN] [(999)]999-9999 [X99999] [B99999] [C any text],,
+PID,14,Phone Number - Business,2,Telecommunication Use Code,,
+PID,14,Phone Number - Business,3,Telecommunication Equipment Type,,
+PID,14,Phone Number - Business,4,Email Address,,
+PID,14,Phone Number - Business,5,Country Code,,
+PID,14,Phone Number - Business,6,Area/City Code,,
+PID,14,Phone Number - Business,7,Phone Number,,
+PID,14,Phone Number - Business,8,Extension,,
+PID,14,Phone Number - Business,9,Any Text,,
+PID,15,Primary Language,1,Identifier,,
+PID,15,Primary Language,2,Text,,
+PID,15,Primary Language,3,Name of Coding System,,
+PID,15,Primary Language,4,Alternate Identifier,,
+PID,15,Primary Language,5,Alternate Text,,
+PID,15,Primary Language,6,Name of Alternate Coding System,,
+PID,16,Marital Status,1,Identifier,,
+PID,16,Marital Status,2,Text,,
+PID,16,Marital Status,3,Name of Coding System,,
+PID,16,Marital Status,4,Alternate Identifier,,
+PID,16,Marital Status,5,Alternate Text,,
+PID,16,Marital Status,6,Name of Alternate Coding System,,
+PID,17,Religion,1,Identifier,,
+PID,17,Religion,2,Text,,
+PID,17,Religion,3,Name of Coding System,,
+PID,17,Religion,4,Alternate Identifier,,
+PID,17,Religion,5,Alternate Text,,
+PID,17,Religion,6,Name of Alternate Coding System,,
+PID,18,Patient Account Number,1,ID Number,,
+PID,18,Patient Account Number,2,Check Digit,,
+PID,18,Patient Account Number,3,Check Digit Scheme,,
+PID,18,Patient Account Number,4,Assigning Authority,1,Namespace ID
+PID,18,Patient Account Number,4,Assigning Authority,2,Universal ID
+PID,18,Patient Account Number,4,Assigning Authority,3,Universal ID Type
+PID,18,Patient Account Number,5,Identifier Type Code,,
+PID,18,Patient Account Number,6,Assigning Facility,1,Namespace ID
+PID,18,Patient Account Number,6,Assigning Facility,2,Universal ID
+PID,18,Patient Account Number,6,Assigning Facility,3,Universal ID Type
+PID,19,SSN Number - Patient,,,,
+PID,20,Driver's License Number - Patient,1,License Number,,
+PID,20,Driver's License Number - Patient,2,"Issuing State, Province, Country",,
+PID,20,Driver's License Number - Patient,3,Expiration Date,,
+PID,21,Mother's Identifier,1,ID Number,,
+PID,21,Mother's Identifier,2,Check Digit,,
+PID,21,Mother's Identifier,3,Check Digit Scheme,,
+PID,21,Mother's Identifier,4,Assigning Authority,1,Namespace ID
+PID,21,Mother's Identifier,4,Assigning Authority,2,Universal ID
+PID,21,Mother's Identifier,4,Assigning Authority,3,Universal ID Type
+PID,21,Mother's Identifier,5,Identifier Type Code,,
+PID,21,Mother's Identifier,6,Assigning Facility,1,Namespace ID
+PID,21,Mother's Identifier,6,Assigning Facility,2,Universal ID
+PID,21,Mother's Identifier,6,Assigning Facility,3,Universal ID Type
+PID,22,Ethnic Group,1,Identifier,,
+PID,22,Ethnic Group,2,Text,,
+PID,22,Ethnic Group,3,Name of Coding System,,
+PID,22,Ethnic Group,4,Alternate Identifier,,
+PID,22,Ethnic Group,5,Alternate Text,,
+PID,22,Ethnic Group,6,Name of Alternate Coding System,,
+PID,23,Birth Place,,,,
+PID,24,Multiple Birth Indicator,,,,
+PID,25,Birth Order,,,,
+PID,26,Citizenship,1,Identifier,,
+PID,26,Citizenship,2,Text,,
+PID,26,Citizenship,3,Name of Coding System,,
+PID,26,Citizenship,4,Alternate Identifier,,
+PID,26,Citizenship,5,Alternate Text,,
+PID,26,Citizenship,6,Name of Alternate Coding System,,
+PID,27,Veterans Military Status,1,Identifier,,
+PID,27,Veterans Military Status,2,Text,,
+PID,27,Veterans Military Status,3,Name of Coding System,,
+PID,27,Veterans Military Status,4,Alternate Identifier,,
+PID,27,Veterans Military Status,5,Alternate Text,,
+PID,27,Veterans Military Status,6,Name of Alternate Coding System,,
+PID,28,Nationality,1,Identifier,,
+PID,28,Nationality,2,Text,,
+PID,28,Nationality,3,Name of Coding System,,
+PID,28,Nationality,4,Alternate Identifier,,
+PID,28,Nationality,5,Alternate Text,,
+PID,28,Nationality,6,Name of Alternate Coding System,,
+PID,29,Patient Death Date and Time,,,,
+PID,30,Patient Death Indicator,,,,
+NK1,1,Set ID - NK1,,,,
+NK1,2,Name,1,Family Name,1,Family Name
+NK1,2,Name,1,Family Name,2,Last Name Prefix
+NK1,2,Name,2,Given Name,,
+NK1,2,Name,3,Middle Initial or Name,,
+NK1,2,Name,4,"Suffix (e.g., JR or III)",,
+NK1,2,Name,5,"Prefix (e.g., DR)",,
+NK1,2,Name,6,"Degree (e.g., MD)",,
+NK1,2,Name,7,Name Type Code,,
+NK1,2,Name,8,Name Representation Code,,
+NK1,3,Relationship,1,Identifier,,
+NK1,3,Relationship,2,Text,,
+NK1,3,Relationship,3,Name of Coding System,,
+NK1,3,Relationship,4,Alternate Identifier,,
+NK1,3,Relationship,5,Alternate Text,,
+NK1,3,Relationship,6,Name of Alternate Coding System,,
+NK1,4,Address,1,Street Address,,
+NK1,4,Address,2,Other Designation,,
+NK1,4,Address,3,City,,
+NK1,4,Address,4,State or Province,,
+NK1,4,Address,5,Zip or Postal Code,,
+NK1,4,Address,6,Country Code,,
+NK1,4,Address,7,Address Type,,
+NK1,4,Address,8,Other Geographic Designation,,
+NK1,4,Address,9,County/Parish Code,,
+NK1,4,Address,10,Census Tract,,
+NK1,5,Phone Number,1,[NNN] [(999)]999-9999 [X99999] [B99999] [C any text],,
+NK1,5,Phone Number,2,Telecommunication Use Code,,
+NK1,5,Phone Number,3,Telecommunication Equipment Type,,
+NK1,5,Phone Number,4,Email Address,,
+NK1,5,Phone Number,5,Country Code,,
+NK1,5,Phone Number,6,Area/City Code,,
+NK1,5,Phone Number,7,Phone Number,,
+NK1,5,Phone Number,8,Extension,,
+NK1,5,Phone Number,9,Any Text,,
+NK1,6,Business Phone Number,1,[NNN] [(999)]999-9999 [X99999] [B99999] [C any text],,
+NK1,6,Business Phone Number,2,Telecommunication Use Code,,
+NK1,6,Business Phone Number,3,Telecommunication Equipment Type,,
+NK1,6,Business Phone Number,4,Email Address,,
+NK1,6,Business Phone Number,5,Country Code,,
+NK1,6,Business Phone Number,6,Area/City Code,,
+NK1,6,Business Phone Number,7,Phone Number,,
+NK1,6,Business Phone Number,8,Extension,,
+NK1,6,Business Phone Number,9,Any Text,,
+NK1,7,Contact Role,1,Identifier,,
+NK1,7,Contact Role,2,Text,,
+NK1,7,Contact Role,3,Name of Coding System,,
+NK1,7,Contact Role,4,Alternate Identifier,,
+NK1,7,Contact Role,5,Alternate Text,,
+NK1,7,Contact Role,6,Name of Alternate Coding System,,
+NK1,8,Start Date,,,,
+NK1,9,End Date,,,,
+NK1,10,Next of Kin / Associated Parties Job Title,,,,
+NK1,11,Next of Kin / Associated Parties Job Code/Class,1,Job Code,,
+NK1,11,Next of Kin / Associated Parties Job Code/Class,2,Employee Classification,,
+NK1,12,Next of Kin / Associated Parties Employee Number,1,ID Number,,
+NK1,12,Next of Kin / Associated Parties Employee Number,2,Check Digit,,
+NK1,12,Next of Kin / Associated Parties Employee Number,3,Check Digit Scheme,,
+NK1,12,Next of Kin / Associated Parties Employee Number,4,Assigning Authority,1,Namespace ID
+NK1,12,Next of Kin / Associated Parties Employee Number,4,Assigning Authority,2,Universal ID
+NK1,12,Next of Kin / Associated Parties Employee Number,4,Assigning Authority,3,Universal ID Type
+NK1,12,Next of Kin / Associated Parties Employee Number,5,Identifier Type Code,,
+NK1,12,Next of Kin / Associated Parties Employee Number,6,Assigning Facility,1,Namespace ID
+NK1,12,Next of Kin / Associated Parties Employee Number,6,Assigning Facility,2,Universal ID
+NK1,12,Next of Kin / Associated Parties Employee Number,6,Assigning Facility,3,Universal ID Type
+NK1,13,Organization Name - NK1,1,Organization Name,,
+NK1,13,Organization Name - NK1,2,Organization Name Type Code,,
+NK1,13,Organization Name - NK1,3,ID Number,,
+NK1,13,Organization Name - NK1,4,Check Digit,,
+NK1,13,Organization Name - NK1,5,Check Digit Scheme,,
+NK1,13,Organization Name - NK1,6,Assigning Authority,1,Namespace ID
+NK1,13,Organization Name - NK1,6,Assigning Authority,2,Universal ID
+NK1,13,Organization Name - NK1,6,Assigning Authority,3,Universal ID Type
+NK1,13,Organization Name - NK1,7,Identifier Type Code,,
+NK1,13,Organization Name - NK1,8,Assigning Facility,1,Namespace ID
+NK1,13,Organization Name - NK1,8,Assigning Facility,2,Universal ID
+NK1,13,Organization Name - NK1,8,Assigning Facility,3,Universal ID Type
+NK1,13,Organization Name - NK1,9,Name Representation Code,,
+NK1,14,Marital Status,1,Identifier,,
+NK1,14,Marital Status,2,Text,,
+NK1,14,Marital Status,3,Name of Coding System,,
+NK1,14,Marital Status,4,Alternate Identifier,,
+NK1,14,Marital Status,5,Alternate Text,,
+NK1,14,Marital Status,6,Name of Alternate Coding System,,
+NK1,15,Sex,,,,
+NK1,16,Date/Time of Birth,,,,
+NK1,17,Living Dependency,,,,
+NK1,18,Ambulatory Status,,,,
+NK1,19,Citizenship,1,Identifier,,
+NK1,19,Citizenship,2,Text,,
+NK1,19,Citizenship,3,Name of Coding System,,
+NK1,19,Citizenship,4,Alternate Identifier,,
+NK1,19,Citizenship,5,Alternate Text,,
+NK1,19,Citizenship,6,Name of Alternate Coding System,,
+NK1,20,Primary Language,1,Identifier,,
+NK1,20,Primary Language,2,Text,,
+NK1,20,Primary Language,3,Name of Coding System,,
+NK1,20,Primary Language,4,Alternate Identifier,,
+NK1,20,Primary Language,5,Alternate Text,,
+NK1,20,Primary Language,6,Name of Alternate Coding System,,
+NK1,21,Living Arrangement,,,,
+NK1,22,Publicity Code,1,Identifier,,
+NK1,22,Publicity Code,2,Text,,
+NK1,22,Publicity Code,3,Name of Coding System,,
+NK1,22,Publicity Code,4,Alternate Identifier,,
+NK1,22,Publicity Code,5,Alternate Text,,
+NK1,22,Publicity Code,6,Name of Alternate Coding System,,
+NK1,23,Protection Indicator,,,,
+NK1,24,Student Indicator,,,,
+NK1,25,Religion,1,Identifier,,
+NK1,25,Religion,2,Text,,
+NK1,25,Religion,3,Name of Coding System,,
+NK1,25,Religion,4,Alternate Identifier,,
+NK1,25,Religion,5,Alternate Text,,
+NK1,25,Religion,6,Name of Alternate Coding System,,
+NK1,26,Mother's Maiden Name,1,Family Name,1,Family Name
+NK1,26,Mother's Maiden Name,1,Family Name,2,Last Name Prefix
+NK1,26,Mother's Maiden Name,2,Given Name,,
+NK1,26,Mother's Maiden Name,3,Middle Initial or Name,,
+NK1,26,Mother's Maiden Name,4,"Suffix (e.g., JR or III)",,
+NK1,26,Mother's Maiden Name,5,"Prefix (e.g., DR)",,
+NK1,26,Mother's Maiden Name,6,"Degree (e.g., MD)",,
+NK1,26,Mother's Maiden Name,7,Name Type Code,,
+NK1,26,Mother's Maiden Name,8,Name Representation Code,,
+NK1,27,Nationality,1,Identifier,,
+NK1,27,Nationality,2,Text,,
+NK1,27,Nationality,3,Name of Coding System,,
+NK1,27,Nationality,4,Alternate Identifier,,
+NK1,27,Nationality,5,Alternate Text,,
+NK1,27,Nationality,6,Name of Alternate Coding System,,
+NK1,28,Ethnic Group,1,Identifier,,
+NK1,28,Ethnic Group,2,Text,,
+NK1,28,Ethnic Group,3,Name of Coding System,,
+NK1,28,Ethnic Group,4,Alternate Identifier,,
+NK1,28,Ethnic Group,5,Alternate Text,,
+NK1,28,Ethnic Group,6,Name of Alternate Coding System,,
+NK1,29,Contact Reason,1,Identifier,,
+NK1,29,Contact Reason,2,Text,,
+NK1,29,Contact Reason,3,Name of Coding System,,
+NK1,29,Contact Reason,4,Alternate Identifier,,
+NK1,29,Contact Reason,5,Alternate Text,,
+NK1,29,Contact Reason,6,Name of Alternate Coding System,,
+NK1,30,Contact Person's Name,1,Family Name,1,Family Name
+NK1,30,Contact Person's Name,1,Family Name,2,Last Name Prefix
+NK1,30,Contact Person's Name,2,Given Name,,
+NK1,30,Contact Person's Name,3,Middle Initial or Name,,
+NK1,30,Contact Person's Name,4,"Suffix (e.g., JR or III)",,
+NK1,30,Contact Person's Name,5,"Prefix (e.g., DR)",,
+NK1,30,Contact Person's Name,6,"Degree (e.g., MD)",,
+NK1,30,Contact Person's Name,7,Name Type Code,,
+NK1,30,Contact Person's Name,8,Name Representation Code,,
+NK1,31,Contact Person's Telephone Number,1,[NNN] [(999)]999-9999 [X99999] [B99999] [C any text],,
+NK1,31,Contact Person's Telephone Number,2,Telecommunication Use Code,,
+NK1,31,Contact Person's Telephone Number,3,Telecommunication Equipment Type,,
+NK1,31,Contact Person's Telephone Number,4,Email Address,,
+NK1,31,Contact Person's Telephone Number,5,Country Code,,
+NK1,31,Contact Person's Telephone Number,6,Area/City Code,,
+NK1,31,Contact Person's Telephone Number,7,Phone Number,,
+NK1,31,Contact Person's Telephone Number,8,Extension,,
+NK1,31,Contact Person's Telephone Number,9,Any Text,,
+NK1,32,Contact Person's Address,1,Street Address,,
+NK1,32,Contact Person's Address,2,Other Designation,,
+NK1,32,Contact Person's Address,3,City,,
+NK1,32,Contact Person's Address,4,State or Province,,
+NK1,32,Contact Person's Address,5,Zip or Postal Code,,
+NK1,32,Contact Person's Address,6,Country Code,,
+NK1,32,Contact Person's Address,7,Address Type,,
+NK1,32,Contact Person's Address,8,Other Geographic Designation,,
+NK1,32,Contact Person's Address,9,County/Parish Code,,
+NK1,32,Contact Person's Address,10,Census Tract,,
+NK1,32,Contact Person's Address,11,Address Representation Code,,
+NK1,33,Next of Kin/Associated Party's Identifiers,1,ID Number,,
+NK1,33,Next of Kin/Associated Party's Identifiers,2,Check Digit,,
+NK1,33,Next of Kin/Associated Party's Identifiers,3,Check Digit Scheme,,
+NK1,33,Next of Kin/Associated Party's Identifiers,4,Assigning Authority,1,Namespace ID
+NK1,33,Next of Kin/Associated Party's Identifiers,4,Assigning Authority,2,Universal ID
+NK1,33,Next of Kin/Associated Party's Identifiers,4,Assigning Authority,3,Universal ID Type
+NK1,33,Next of Kin/Associated Party's Identifiers,5,Identifier Type Code,,
+NK1,33,Next of Kin/Associated Party's Identifiers,6,Assigning Facility,1,Namespace ID
+NK1,33,Next of Kin/Associated Party's Identifiers,6,Assigning Facility,2,Universal ID
+NK1,33,Next of Kin/Associated Party's Identifiers,6,Assigning Facility,3,Universal ID Type
+NK1,34,Job Status,,,,
+NK1,35,Race,1,Identifier,,
+NK1,35,Race,2,Text,,
+NK1,35,Race,3,Name of Coding System,,
+NK1,35,Race,4,Alternate Identifier,,
+NK1,35,Race,5,Alternate Text,,
+NK1,35,Race,6,Name of Alternate Coding System,,
+NK1,36,Handicap,,,,
+NK1,37,Contact Person Social Security Number,,,,
+OBR,1,Set ID - OBR,,,,
+OBR,2,Placer Order Number,1,Entity Identifier,,
+OBR,2,Placer Order Number,2,Namespace ID,,
+OBR,2,Placer Order Number,3,Universal ID,,
+OBR,2,Placer Order Number,4,Universal ID Type,,
+OBR,3,Filler Order Number,1,Entity Identifier,,
+OBR,3,Filler Order Number,2,Namespace ID,,
+OBR,3,Filler Order Number,3,Universal ID,,
+OBR,3,Filler Order Number,4,Universal ID Type,,
+OBR,4,Universal Service Identifier,1,Identifier,,
+OBR,4,Universal Service Identifier,2,Text,,
+OBR,4,Universal Service Identifier,3,Name of Coding System,,
+OBR,4,Universal Service Identifier,4,Alternate Identifier,,
+OBR,4,Universal Service Identifier,5,Alternate Text,,
+OBR,4,Universal Service Identifier,6,Name of Alternate Coding System,,
+OBR,5,Priority - OBR,,,,
+OBR,6,Requested Date/Time,,,,
+OBR,7,Observation Date/Time,,,,
+OBR,8,Observation End Date/Time,,,,
+OBR,9,Collection Volume,1,Quantity,,
+OBR,9,Collection Volume,2,Units,1,Identifier
+OBR,9,Collection Volume,2,Units,2,Text
+OBR,9,Collection Volume,2,Units,3,Name of Coding System
+OBR,9,Collection Volume,2,Units,4,Alternate Identifier
+OBR,9,Collection Volume,2,Units,5,Alternate Text
+OBR,9,Collection Volume,2,Units,6,Name of Alternate Coding System
+OBR,10,Collector Identifier,1,ID Number,,
+OBR,10,Collector Identifier,2,Family Name,1,Family Name
+OBR,10,Collector Identifier,2,Family Name,2,Last Name Prefix
+OBR,10,Collector Identifier,3,Given Name,,
+OBR,10,Collector Identifier,4,Middle Initial or Name,,
+OBR,10,Collector Identifier,5,"Suffix (e.g., JR or III)",,
+OBR,10,Collector Identifier,6,"Prefix (e.g., DR)",,
+OBR,10,Collector Identifier,7,"Degree (e.g., MD)",,
+OBR,10,Collector Identifier,8,Source Table,,
+OBR,10,Collector Identifier,9,Assigning Authority,1,Namespace ID
+OBR,10,Collector Identifier,9,Assigning Authority,2,Universal ID
+OBR,10,Collector Identifier,9,Assigning Authority,3,Universal ID Type
+OBR,10,Collector Identifier,10,Name Type Code,,
+OBR,10,Collector Identifier,11,Identifier Check Digit,,
+OBR,10,Collector Identifier,12,Check Digit Scheme,,
+OBR,10,Collector Identifier,13,Identifier Type Code,,
+OBR,10,Collector Identifier,14,Assigning Facility,1,Namespace ID
+OBR,10,Collector Identifier,14,Assigning Facility,2,Universal ID
+OBR,10,Collector Identifier,14,Assigning Facility,3,Universal ID Type
+OBR,10,Collector Identifier,15,Name Representation Code,,
+OBR,11,Specimen Action Code,,,,
+OBR,12,Danger Code,1,Identifier,,
+OBR,12,Danger Code,2,Text,,
+OBR,12,Danger Code,3,Name of Coding System,,
+OBR,12,Danger Code,4,Alternate Identifier,,
+OBR,12,Danger Code,5,Alternate Text,,
+OBR,12,Danger Code,6,Name of Alternate Coding System,,
+OBR,13,Relevant Clinical Information,,,,
+OBR,14,Specimen Received Date/Time,,,,
+OBR,15,Specimen Source,1,Specimen Source name or Code,1,Identifier
+OBR,15,Specimen Source,1,Specimen Source name or Code,2,Text
+OBR,15,Specimen Source,1,Specimen Source name or Code,3,Name of Coding System
+OBR,15,Specimen Source,1,Specimen Source name or Code,4,Alternate Identifier
+OBR,15,Specimen Source,1,Specimen Source name or Code,5,Alternate Text
+OBR,15,Specimen Source,1,Specimen Source name or Code,6,Name of Alternate Coding System
+OBR,15,Specimen Source,2,Additives,,
+OBR,15,Specimen Source,3,Freetext,,
+OBR,15,Specimen Source,4,Body Site,1,Identifier
+OBR,15,Specimen Source,4,Body Site,2,Text
+OBR,15,Specimen Source,4,Body Site,3,Name of Coding System
+OBR,15,Specimen Source,4,Body Site,4,Alternate Identifier
+OBR,15,Specimen Source,4,Body Site,5,Alternate Text
+OBR,15,Specimen Source,4,Body Site,6,Name of Alternate Coding System
+OBR,15,Specimen Source,5,Site Modifier,1,Identifier
+OBR,15,Specimen Source,5,Site Modifier,2,Text
+OBR,15,Specimen Source,5,Site Modifier,3,Name of Coding System
+OBR,15,Specimen Source,5,Site Modifier,4,Alternate Identifier
+OBR,15,Specimen Source,5,Site Modifier,5,Alternate Text
+OBR,15,Specimen Source,5,Site Modifier,6,Name of Alternate Coding System
+OBR,15,Specimen Source,6,Collection Method Modifier Code,1,Identifier
+OBR,15,Specimen Source,6,Collection Method Modifier Code,2,Text
+OBR,15,Specimen Source,6,Collection Method Modifier Code,3,Name of Coding System
+OBR,15,Specimen Source,6,Collection Method Modifier Code,4,Alternate Identifier
+OBR,15,Specimen Source,6,Collection Method Modifier Code,5,Alternate Text
+OBR,15,Specimen Source,6,Collection Method Modifier Code,6,Name of Alternate Coding System
+OBR,16,Ordering Provider,1,ID Number,,
+OBR,16,Ordering Provider,2,Family Name,1,Family Name
+OBR,16,Ordering Provider,2,Family Name,2,Last Name Prefix
+OBR,16,Ordering Provider,3,Given Name,,
+OBR,16,Ordering Provider,4,Middle Initial or Name,,
+OBR,16,Ordering Provider,5,"Suffix (e.g., JR or III)",,
+OBR,16,Ordering Provider,6,"Prefix (e.g., DR)",,
+OBR,16,Ordering Provider,7,"Degree (e.g., MD)",,
+OBR,16,Ordering Provider,8,Source Table,,
+OBR,16,Ordering Provider,9,Assigning Authority,1,Namespace ID
+OBR,16,Ordering Provider,9,Assigning Authority,2,Universal ID
+OBR,16,Ordering Provider,9,Assigning Authority,3,Universal ID Type
+OBR,16,Ordering Provider,10,Name Type Code,,
+OBR,16,Ordering Provider,11,Identifier Check Digit,,
+OBR,16,Ordering Provider,12,Check Digit Scheme,,
+OBR,16,Ordering Provider,13,Identifier Type Code,,
+OBR,16,Ordering Provider,14,Assigning Facility,1,Namespace ID
+OBR,16,Ordering Provider,14,Assigning Facility,2,Universal ID
+OBR,16,Ordering Provider,14,Assigning Facility,3,Universal ID Type
+OBR,16,Ordering Provider,15,Name Representation Code,,
+OBR,17,Order Callback Phone Number,1,[NNN] [(999)]999-9999 [X99999] [B99999] [C any text],,
+OBR,17,Order Callback Phone Number,2,Telecommunication Use Code,,
+OBR,17,Order Callback Phone Number,3,Telecommunication Equipment Type,,
+OBR,17,Order Callback Phone Number,4,Email Address,,
+OBR,17,Order Callback Phone Number,5,Country Code,,
+OBR,17,Order Callback Phone Number,6,Area/City Code,,
+OBR,17,Order Callback Phone Number,7,Phone Number,,
+OBR,17,Order Callback Phone Number,8,Extension,,
+OBR,17,Order Callback Phone Number,9,Any Text,,
+OBR,18,Placer Field 1,,,,
+OBR,19,Placer Field 2,,,,
+OBR,20,Filler Field 1,,,,
+OBR,21,Filler Field 2,,,,
+OBR,22,Results Rpt/Status Chng - Date/Time,,,,
+OBR,23,Charge to Practice,1,Dollar Amount,1,Quantity
+OBR,23,Charge to Practice,1,Dollar Amount,2,Denomination
+OBR,23,Charge to Practice,2,Charge Code,1,Identifier
+OBR,23,Charge to Practice,2,Charge Code,2,Text
+OBR,23,Charge to Practice,2,Charge Code,3,Name of Coding System
+OBR,23,Charge to Practice,2,Charge Code,4,Alternate Identifier
+OBR,23,Charge to Practice,2,Charge Code,5,Alternate Text
+OBR,23,Charge to Practice,2,Charge Code,6,Name of Alternate Coding System
+OBR,24,Diagnostic Serv Sect ID,,,,
+OBR,25,Result Status,,,,
+OBR,26,Parent Result,1,OBX-3-observation identifier of parent result,1,Identifier
+OBR,26,Parent Result,1,OBX-3-observation identifier of parent result,2,Text
+OBR,26,Parent Result,1,OBX-3-observation identifier of parent result,3,Name of Coding System
+OBR,26,Parent Result,1,OBX-3-observation identifier of parent result,4,Alternate Identifier
+OBR,26,Parent Result,1,OBX-3-observation identifier of parent result,5,Alternate Text
+OBR,26,Parent Result,1,OBX-3-observation identifier of parent result,6,Name of Alternate Coding System
+OBR,26,Parent Result,2,OBX-4-sub-ID of parent result,,
+OBR,26,Parent Result,3,part of OBX-5 observation result from parent,,
+OBR,27,Quantity/Timing,1,Quantity,,
+OBR,27,Quantity/Timing,2,Interval,,
+OBR,27,Quantity/Timing,3,Duration,,
+OBR,27,Quantity/Timing,4,Start Date/Time,,
+OBR,27,Quantity/Timing,5,End Date/Time,,
+OBR,27,Quantity/Timing,6,Priority,,
+OBR,27,Quantity/Timing,7,Condition,,
+OBR,27,Quantity/Timing,8,Text,,
+OBR,27,Quantity/Timing,9,Conjunction,,
+OBR,27,Quantity/Timing,10,Order Sequencing,,
+OBR,27,Quantity/Timing,11,Occurrence Duration,,
+OBR,27,Quantity/Timing,12,Total Occurrences,,
+OBR,28,Result Copies To,1,ID Number,,
+OBR,28,Result Copies To,2,Family Name,1,Family Name
+OBR,28,Result Copies To,2,Family Name,2,Last Name Prefix
+OBR,28,Result Copies To,3,Given Name,,
+OBR,28,Result Copies To,4,Middle Initial or Name,,
+OBR,28,Result Copies To,5,"Suffix (e.g., JR or III)",,
+OBR,28,Result Copies To,6,"Prefix (e.g., DR)",,
+OBR,28,Result Copies To,7,"Degree (e.g., MD)",,
+OBR,28,Result Copies To,8,Source Table,,
+OBR,28,Result Copies To,9,Assigning Authority,1,Namespace ID
+OBR,28,Result Copies To,9,Assigning Authority,2,Universal ID
+OBR,28,Result Copies To,9,Assigning Authority,3,Universal ID Type
+OBR,28,Result Copies To,10,Name Type Code,,
+OBR,28,Result Copies To,11,Identifier Check Digit,,
+OBR,28,Result Copies To,12,Check Digit Scheme,,
+OBR,28,Result Copies To,13,Identifier Type Code,,
+OBR,28,Result Copies To,14,Assigning Facility,1,Namespace ID
+OBR,28,Result Copies To,14,Assigning Facility,2,Universal ID
+OBR,28,Result Copies To,14,Assigning Facility,3,Universal ID Type
+OBR,28,Result Copies To,15,Name Representation Code,,
+OBR,29,Parent,1,Placer Order Number,1,Entity Identifier
+OBR,29,Parent,1,Placer Order Number,2,Namespace ID
+OBR,29,Parent,1,Placer Order Number,3,Universal ID
+OBR,29,Parent,1,Placer Order Number,4,Universal ID Type
+OBR,29,Parent,2,Filler Order Number,1,Entity Identifier
+OBR,29,Parent,2,Filler Order Number,2,Namespace ID
+OBR,29,Parent,2,Filler Order Number,3,Universal ID
+OBR,29,Parent,2,Filler Order Number,4,Universal ID Type
+OBR,30,Transportation Mode,,,,
+OBR,31,Reason for Study,1,Identifier,,
+OBR,31,Reason for Study,2,Text,,
+OBR,31,Reason for Study,3,Name of Coding System,,
+OBR,31,Reason for Study,4,Alternate Identifier,,
+OBR,31,Reason for Study,5,Alternate Text,,
+OBR,31,Reason for Study,6,Name of Alternate Coding System,,
+OBR,32,Principal Result Interpreter,1,Name,1,ID Number
+OBR,32,Principal Result Interpreter,1,Name,2,Family Name
+OBR,32,Principal Result Interpreter,1,Name,3,Given Name
+OBR,32,Principal Result Interpreter,1,Name,4,Middle Initial or Name
+OBR,32,Principal Result Interpreter,1,Name,5,"Suffix (e.g., JR or III)"
+OBR,32,Principal Result Interpreter,1,Name,6,"Prefix (e.g., DR)"
+OBR,32,Principal Result Interpreter,1,Name,7,"Degree (e.g., MD)"
+OBR,32,Principal Result Interpreter,1,Name,8,Source Table
+OBR,32,Principal Result Interpreter,1,Name,9,Assigning Authority
+OBR,32,Principal Result Interpreter,2,Start Date/Time,,
+OBR,32,Principal Result Interpreter,3,End Date/Time,,
+OBR,32,Principal Result Interpreter,4,Point of Care,,
+OBR,32,Principal Result Interpreter,5,Room,,
+OBR,32,Principal Result Interpreter,6,Bed,,
+OBR,32,Principal Result Interpreter,7,Facility,1,Namespace ID
+OBR,32,Principal Result Interpreter,7,Facility,2,Universal ID
+OBR,32,Principal Result Interpreter,7,Facility,3,Universal ID Type
+OBR,32,Principal Result Interpreter,8,Location Status,,
+OBR,32,Principal Result Interpreter,9,Person Location Type,,
+OBR,32,Principal Result Interpreter,10,Building,,
+OBR,32,Principal Result Interpreter,11,Floor,,
+OBR,33,Assistant Result Interpreter,1,Name,1,ID Number
+OBR,33,Assistant Result Interpreter,1,Name,2,Family Name
+OBR,33,Assistant Result Interpreter,1,Name,3,Given Name
+OBR,33,Assistant Result Interpreter,1,Name,4,Middle Initial or Name
+OBR,33,Assistant Result Interpreter,1,Name,5,"Suffix (e.g., JR or III)"
+OBR,33,Assistant Result Interpreter,1,Name,6,"Prefix (e.g., DR)"
+OBR,33,Assistant Result Interpreter,1,Name,7,"Degree (e.g., MD)"
+OBR,33,Assistant Result Interpreter,1,Name,8,Source Table
+OBR,33,Assistant Result Interpreter,1,Name,9,Assigning Authority
+OBR,33,Assistant Result Interpreter,2,Start Date/Time,,
+OBR,33,Assistant Result Interpreter,3,End Date/Time,,
+OBR,33,Assistant Result Interpreter,4,Point of Care,,
+OBR,33,Assistant Result Interpreter,5,Room,,
+OBR,33,Assistant Result Interpreter,6,Bed,,
+OBR,33,Assistant Result Interpreter,7,Facility,1,Namespace ID
+OBR,33,Assistant Result Interpreter,7,Facility,2,Universal ID
+OBR,33,Assistant Result Interpreter,7,Facility,3,Universal ID Type
+OBR,33,Assistant Result Interpreter,8,Location Status,,
+OBR,33,Assistant Result Interpreter,9,Person Location Type,,
+OBR,33,Assistant Result Interpreter,10,Building,,
+OBR,33,Assistant Result Interpreter,11,Floor,,
+OBR,34,Technician,1,Name,1,ID Number
+OBR,34,Technician,1,Name,2,Family Name
+OBR,34,Technician,1,Name,3,Given Name
+OBR,34,Technician,1,Name,4,Middle Initial or Name
+OBR,34,Technician,1,Name,5,"Suffix (e.g., JR or III)"
+OBR,34,Technician,1,Name,6,"Prefix (e.g., DR)"
+OBR,34,Technician,1,Name,7,"Degree (e.g., MD)"
+OBR,34,Technician,1,Name,8,Source Table
+OBR,34,Technician,1,Name,9,Assigning Authority
+OBR,34,Technician,2,Start Date/Time,,
+OBR,34,Technician,3,End Date/Time,,
+OBR,34,Technician,4,Point of Care,,
+OBR,34,Technician,5,Room,,
+OBR,34,Technician,6,Bed,,
+OBR,34,Technician,7,Facility,1,Namespace ID
+OBR,34,Technician,7,Facility,2,Universal ID
+OBR,34,Technician,7,Facility,3,Universal ID Type
+OBR,34,Technician,8,Location Status,,
+OBR,34,Technician,9,Person Location Type,,
+OBR,34,Technician,10,Building,,
+OBR,34,Technician,11,Floor,,
+OBR,35,Transcriptionist,1,Name,1,ID Number
+OBR,35,Transcriptionist,1,Name,2,Family Name
+OBR,35,Transcriptionist,1,Name,3,Given Name
+OBR,35,Transcriptionist,1,Name,4,Middle Initial or Name
+OBR,35,Transcriptionist,1,Name,5,"Suffix (e.g., JR or III)"
+OBR,35,Transcriptionist,1,Name,6,"Prefix (e.g., DR)"
+OBR,35,Transcriptionist,1,Name,7,"Degree (e.g., MD)"
+OBR,35,Transcriptionist,1,Name,8,Source Table
+OBR,35,Transcriptionist,1,Name,9,Assigning Authority
+OBR,35,Transcriptionist,2,Start Date/Time,,
+OBR,35,Transcriptionist,3,End Date/Time,,
+OBR,35,Transcriptionist,4,Point of Care,,
+OBR,35,Transcriptionist,5,Room,,
+OBR,35,Transcriptionist,6,Bed,,
+OBR,35,Transcriptionist,7,Facility,1,Namespace ID
+OBR,35,Transcriptionist,7,Facility,2,Universal ID
+OBR,35,Transcriptionist,7,Facility,3,Universal ID Type
+OBR,35,Transcriptionist,8,Location Status,,
+OBR,35,Transcriptionist,9,Person Location Type,,
+OBR,35,Transcriptionist,10,Building,,
+OBR,35,Transcriptionist,11,Floor,,
+OBR,36,Scheduled Date/Time,,,,
+OBR,37,Number of Sample Containers,,,,
+OBR,38,Transport Logistics of Collected Sample,1,Identifier,,
+OBR,38,Transport Logistics of Collected Sample,2,Text,,
+OBR,38,Transport Logistics of Collected Sample,3,Name of Coding System,,
+OBR,38,Transport Logistics of Collected Sample,4,Alternate Identifier,,
+OBR,38,Transport Logistics of Collected Sample,5,Alternate Text,,
+OBR,38,Transport Logistics of Collected Sample,6,Name of Alternate Coding System,,
+OBR,39,Collector's Comment,1,Identifier,,
+OBR,39,Collector's Comment,2,Text,,
+OBR,39,Collector's Comment,3,Name of Coding System,,
+OBR,39,Collector's Comment,4,Alternate Identifier,,
+OBR,39,Collector's Comment,5,Alternate Text,,
+OBR,39,Collector's Comment,6,Name of Alternate Coding System,,
+OBR,40,Transport Arrangement Responsibility,1,Identifier,,
+OBR,40,Transport Arrangement Responsibility,2,Text,,
+OBR,40,Transport Arrangement Responsibility,3,Name of Coding System,,
+OBR,40,Transport Arrangement Responsibility,4,Alternate Identifier,,
+OBR,40,Transport Arrangement Responsibility,5,Alternate Text,,
+OBR,40,Transport Arrangement Responsibility,6,Name of Alternate Coding System,,
+OBR,41,Transport Arranged,,,,
+OBR,42,Escort Required,,,,
+OBR,43,Planned Patient Transport Comment,1,Identifier,,
+OBR,43,Planned Patient Transport Comment,2,Text,,
+OBR,43,Planned Patient Transport Comment,3,Name of Coding System,,
+OBR,43,Planned Patient Transport Comment,4,Alternate Identifier,,
+OBR,43,Planned Patient Transport Comment,5,Alternate Text,,
+OBR,43,Planned Patient Transport Comment,6,Name of Alternate Coding System,,
+OBR,44,Procedure Code,1,Identifier,,
+OBR,44,Procedure Code,2,Text,,
+OBR,44,Procedure Code,3,Name of Coding System,,
+OBR,44,Procedure Code,4,Alternate Identifier,,
+OBR,44,Procedure Code,5,Alternate Text,,
+OBR,44,Procedure Code,6,Name of Alternate Coding System,,
+OBR,45,Procedure Code Modifier,1,Identifier,,
+OBR,45,Procedure Code Modifier,2,Text,,
+OBR,45,Procedure Code Modifier,3,Name of Coding System,,
+OBR,45,Procedure Code Modifier,4,Alternate Identifier,,
+OBR,45,Procedure Code Modifier,5,Alternate Text,,
+OBR,45,Procedure Code Modifier,6,Name of Alternate Coding System,,
+OBX,1,Set ID - OBX,,,,
+OBX,2,Value Type,,,,
+OBX,3,Observation Identifier,1,Identifier,,
+OBX,3,Observation Identifier,2,Text,,
+OBX,3,Observation Identifier,3,Name of Coding System,,
+OBX,3,Observation Identifier,4,Alternate Identifier,,
+OBX,3,Observation Identifier,5,Alternate Text,,
+OBX,3,Observation Identifier,6,Name of Alternate Coding System,,
+OBX,4,Observation Sub-ID,,,,
+OBX,5,Observation Value,1,Identifier,,
+OBX,5,Observation Value,2,Text,,
+OBX,5,Observation Value,3,Name of Coding System,,
+OBX,5,Observation Value,4,Alternate Identifier,,
+OBX,5,Observation Value,5,Alternate Text,,
+OBX,5,Observation Value,6,Name of Alternate Coding System,,
+OBX,6,Units,1,Identifier,,
+OBX,6,Units,2,Text,,
+OBX,6,Units,3,Name of Coding System,,
+OBX,6,Units,4,Alternate Identifier,,
+OBX,6,Units,5,Alternate Text,,
+OBX,6,Units,6,Name of Alternate Coding System,,
+OBX,7,References Range,,,,
+OBX,8,Abnormal Flags,,,,
+OBX,9,Probability,,,,
+OBX,10,Nature of Abnormal Test,,,,
+OBX,11,Observation Result Status,,,,
+OBX,12,Date Last Obs Normal Value,,,,
+OBX,13,User Defined Access Checks,,,,
+OBX,14,Date/Time of the Observation,,,,
+OBX,15,Producer's ID,1,Identifier,,
+OBX,15,Producer's ID,2,Text,,
+OBX,15,Producer's ID,3,Name of Coding System,,
+OBX,15,Producer's ID,4,Alternate Identifier,,
+OBX,15,Producer's ID,5,Alternate Text,,
+OBX,15,Producer's ID,6,Name of Alternate Coding System,,
+OBX,16,Responsible Observer,1,ID Number,,
+OBX,16,Responsible Observer,2,Family Name,1,Family Name
+OBX,16,Responsible Observer,2,Family Name,2,Last Name Prefix
+OBX,16,Responsible Observer,3,Given Name,,
+OBX,16,Responsible Observer,4,Middle Initial or Name,,
+OBX,16,Responsible Observer,5,"Suffix (e.g., JR or III)",,
+OBX,16,Responsible Observer,6,"Prefix (e.g., DR)",,
+OBX,16,Responsible Observer,7,"Degree (e.g., MD)",,
+OBX,16,Responsible Observer,8,Source Table,,
+OBX,16,Responsible Observer,9,Assigning Authority,1,Namespace ID
+OBX,16,Responsible Observer,9,Assigning Authority,2,Universal ID
+OBX,16,Responsible Observer,9,Assigning Authority,3,Universal ID Type
+OBX,16,Responsible Observer,10,Name Type Code,,
+OBX,16,Responsible Observer,11,Identifier Check Digit,,
+OBX,16,Responsible Observer,12,Check Digit Scheme,,
+OBX,16,Responsible Observer,13,Identifier Type Code,,
+OBX,16,Responsible Observer,14,Assigning Facility,1,Namespace ID
+OBX,16,Responsible Observer,14,Assigning Facility,2,Universal ID
+OBX,16,Responsible Observer,14,Assigning Facility,3,Universal ID Type
+OBX,16,Responsible Observer,15,Name Representation Code,,
+OBX,17,Observation Method,1,Identifier,,
+OBX,17,Observation Method,2,Text,,
+OBX,17,Observation Method,3,Name of Coding System,,
+OBX,17,Observation Method,4,Alternate Identifier,,
+OBX,17,Observation Method,5,Alternate Text,,
+OBX,17,Observation Method,6,Name of Alternate Coding System,,
+ORC,1,Order Control,,,,
+ORC,2,Placer Order Number,1,Entity Identifier,,
+ORC,2,Placer Order Number,2,Namespace ID,,
+ORC,2,Placer Order Number,3,Universal ID,,
+ORC,2,Placer Order Number,4,Universal ID Type,,
+ORC,3,Filler Order Number,1,Entity Identifier,,
+ORC,3,Filler Order Number,2,Namespace ID,,
+ORC,3,Filler Order Number,3,Universal ID,,
+ORC,3,Filler Order Number,4,Universal ID Type,,
+ORC,4,Placer Group Number,1,Entity Identifier,,
+ORC,4,Placer Group Number,2,Namespace ID,,
+ORC,4,Placer Group Number,3,Universal ID,,
+ORC,4,Placer Group Number,4,Universal ID Type,,
+ORC,5,Order Status,,,,
+ORC,6,Response Flag,,,,
+ORC,7,Quantity/Timing,1,Quantity,,
+ORC,7,Quantity/Timing,2,Interval,,
+ORC,7,Quantity/Timing,3,Duration,,
+ORC,7,Quantity/Timing,4,Start Date/Time,,
+ORC,7,Quantity/Timing,5,End Date/Time,,
+ORC,7,Quantity/Timing,6,Priority,,
+ORC,7,Quantity/Timing,7,Condition,,
+ORC,7,Quantity/Timing,8,Text,,
+ORC,7,Quantity/Timing,9,Conjunction,,
+ORC,7,Quantity/Timing,10,Order Sequencing,,
+ORC,7,Quantity/Timing,11,Occurrence Duration,,
+ORC,7,Quantity/Timing,12,Total Occurrences,,
+ORC,8,Parent,1,Placer Order Number,1,Entity Identifier
+ORC,8,Parent,1,Placer Order Number,2,Namespace ID
+ORC,8,Parent,1,Placer Order Number,3,Universal ID
+ORC,8,Parent,1,Placer Order Number,4,Universal ID Type
+ORC,8,Parent,2,Filler Order Number,1,Entity Identifier
+ORC,8,Parent,2,Filler Order Number,2,Namespace ID
+ORC,8,Parent,2,Filler Order Number,3,Universal ID
+ORC,8,Parent,2,Filler Order Number,4,Universal ID Type
+ORC,9,Date/Time of Transaction,,,,
+ORC,10,Entered By,1,ID Number,,
+ORC,10,Entered By,2,Family Name,1,Family Name
+ORC,10,Entered By,2,Family Name,2,Last Name Prefix
+ORC,10,Entered By,3,Given Name,,
+ORC,10,Entered By,4,Middle Initial or Name,,
+ORC,10,Entered By,5,"Suffix (e.g., JR or III)",,
+ORC,10,Entered By,6,"Prefix (e.g., DR)",,
+ORC,10,Entered By,7,"Degree (e.g., MD)",,
+ORC,10,Entered By,8,Source Table,,
+ORC,10,Entered By,9,Assigning Authority,1,Namespace ID
+ORC,10,Entered By,9,Assigning Authority,2,Universal ID
+ORC,10,Entered By,9,Assigning Authority,3,Universal ID Type
+ORC,10,Entered By,10,Name Type Code,,
+ORC,10,Entered By,11,Identifier Check Digit,,
+ORC,10,Entered By,12,Check Digit Scheme,,
+ORC,10,Entered By,13,Identifier Type Code,,
+ORC,10,Entered By,14,Assigning Facility,1,Namespace ID
+ORC,10,Entered By,14,Assigning Facility,2,Universal ID
+ORC,10,Entered By,14,Assigning Facility,3,Universal ID Type
+ORC,10,Entered By,15,Name Representation Code,,
+ORC,11,Verified By,1,ID Number,,
+ORC,11,Verified By,2,Family Name,1,Family Name
+ORC,11,Verified By,2,Family Name,2,Last Name Prefix
+ORC,11,Verified By,3,Given Name,,
+ORC,11,Verified By,4,Middle Initial or Name,,
+ORC,11,Verified By,5,"Suffix (e.g., JR or III)",,
+ORC,11,Verified By,6,"Prefix (e.g., DR)",,
+ORC,11,Verified By,7,"Degree (e.g., MD)",,
+ORC,11,Verified By,8,Source Table,,
+ORC,11,Verified By,9,Assigning Authority,1,Namespace ID
+ORC,11,Verified By,9,Assigning Authority,2,Universal ID
+ORC,11,Verified By,9,Assigning Authority,3,Universal ID Type
+ORC,11,Verified By,10,Name Type Code,,
+ORC,11,Verified By,11,Identifier Check Digit,,
+ORC,11,Verified By,12,Check Digit Scheme,,
+ORC,11,Verified By,13,Identifier Type Code,,
+ORC,11,Verified By,14,Assigning Facility,1,Namespace ID
+ORC,11,Verified By,14,Assigning Facility,2,Universal ID
+ORC,11,Verified By,14,Assigning Facility,3,Universal ID Type
+ORC,11,Verified By,15,Name Representation Code,,
+ORC,12,Ordering Provider,1,ID Number,,
+ORC,12,Ordering Provider,2,Family Name,1,Family Name
+ORC,12,Ordering Provider,2,Family Name,2,Last Name Prefix
+ORC,12,Ordering Provider,3,Given Name,,
+ORC,12,Ordering Provider,4,Middle Initial or Name,,
+ORC,12,Ordering Provider,5,"Suffix (e.g., JR or III)",,
+ORC,12,Ordering Provider,6,"Prefix (e.g., DR)",,
+ORC,12,Ordering Provider,7,"Degree (e.g., MD)",,
+ORC,12,Ordering Provider,8,Source Table,,
+ORC,12,Ordering Provider,9,Assigning Authority,1,Namespace ID
+ORC,12,Ordering Provider,9,Assigning Authority,2,Universal ID
+ORC,12,Ordering Provider,9,Assigning Authority,3,Universal ID Type
+ORC,12,Ordering Provider,10,Name Type Code,,
+ORC,12,Ordering Provider,11,Identifier Check Digit,,
+ORC,12,Ordering Provider,12,Check Digit Scheme,,
+ORC,12,Ordering Provider,13,Identifier Type Code,,
+ORC,12,Ordering Provider,14,Assigning Facility,1,Namespace ID
+ORC,12,Ordering Provider,14,Assigning Facility,2,Universal ID
+ORC,12,Ordering Provider,14,Assigning Facility,3,Universal ID Type
+ORC,12,Ordering Provider,15,Name Representation Code,,
+ORC,13,Enterer's Location,1,Point of Care,,
+ORC,13,Enterer's Location,2,Room,,
+ORC,13,Enterer's Location,3,Bed,,
+ORC,13,Enterer's Location,4,Facility,1,Namespace ID
+ORC,13,Enterer's Location,4,Facility,2,Universal ID
+ORC,13,Enterer's Location,4,Facility,3,Universal ID Type
+ORC,13,Enterer's Location,5,Location Status,,
+ORC,13,Enterer's Location,6,Person Location Type,,
+ORC,13,Enterer's Location,7,Building,,
+ORC,13,Enterer's Location,8,Floor,,
+ORC,13,Enterer's Location,9,Location Description,,
+ORC,14,Call Back Phone Number,1,[NNN] [(999)]999-9999 [X99999] [B99999] [C any text],,
+ORC,14,Call Back Phone Number,2,Telecommunication Use Code,,
+ORC,14,Call Back Phone Number,3,Telecommunication Equipment Type,,
+ORC,14,Call Back Phone Number,4,Email Address,,
+ORC,14,Call Back Phone Number,5,Country Code,,
+ORC,14,Call Back Phone Number,6,Area/City Code,,
+ORC,14,Call Back Phone Number,7,Phone Number,,
+ORC,14,Call Back Phone Number,8,Extension,,
+ORC,14,Call Back Phone Number,9,Any Text,,
+ORC,15,Order Effective Date/Time,,,,
+ORC,16,Order Control Code Reason,1,Identifier,,
+ORC,16,Order Control Code Reason,2,Text,,
+ORC,16,Order Control Code Reason,3,Name of Coding System,,
+ORC,16,Order Control Code Reason,4,Alternate Identifier,,
+ORC,16,Order Control Code Reason,5,Alternate Text,,
+ORC,16,Order Control Code Reason,6,Name of Alternate Coding System,,
+ORC,17,Entering Organization,1,Identifier,,
+ORC,17,Entering Organization,2,Text,,
+ORC,17,Entering Organization,3,Name of Coding System,,
+ORC,17,Entering Organization,4,Alternate Identifier,,
+ORC,17,Entering Organization,5,Alternate Text,,
+ORC,17,Entering Organization,6,Name of Alternate Coding System,,
+ORC,18,Entering Device,1,Identifier,,
+ORC,18,Entering Device,2,Text,,
+ORC,18,Entering Device,3,Name of Coding System,,
+ORC,18,Entering Device,4,Alternate Identifier,,
+ORC,18,Entering Device,5,Alternate Text,,
+ORC,18,Entering Device,6,Name of Alternate Coding System,,
+ORC,19,Action By,1,ID Number,,
+ORC,19,Action By,2,Family Name,1,Family Name
+ORC,19,Action By,2,Family Name,2,Last Name Prefix
+ORC,19,Action By,3,Given Name,,
+ORC,19,Action By,4,Middle Initial or Name,,
+ORC,19,Action By,5,"Suffix (e.g., JR or III)",,
+ORC,19,Action By,6,"Prefix (e.g., DR)",,
+ORC,19,Action By,7,"Degree (e.g., MD)",,
+ORC,19,Action By,8,Source Table,,
+ORC,19,Action By,9,Assigning Authority,1,Namespace ID
+ORC,19,Action By,9,Assigning Authority,2,Universal ID
+ORC,19,Action By,9,Assigning Authority,3,Universal ID Type
+ORC,19,Action By,10,Name Type Code,,
+ORC,19,Action By,11,Identifier Check Digit,,
+ORC,19,Action By,12,Check Digit Scheme,,
+ORC,19,Action By,13,Identifier Type Code,,
+ORC,19,Action By,14,Assigning Facility,1,Namespace ID
+ORC,19,Action By,14,Assigning Facility,2,Universal ID
+ORC,19,Action By,14,Assigning Facility,3,Universal ID Type
+ORC,19,Action By,15,Name Representation Code,,
+ORC,20,Advanced Beneficiary Notice Code,,,,
+ORC,21,Ordering Facility Name,1,Organization Name,,
+ORC,21,Ordering Facility Name,2,Organization Name Type Code,,
+ORC,21,Ordering Facility Name,3,ID Number,,
+ORC,21,Ordering Facility Name,4,Check Digit,,
+ORC,21,Ordering Facility Name,5,Check Digit Scheme,,
+ORC,21,Ordering Facility Name,6,Assigning Authority,1,Namespace ID
+ORC,21,Ordering Facility Name,6,Assigning Authority,2,Universal ID
+ORC,21,Ordering Facility Name,6,Assigning Authority,3,Universal ID Type
+ORC,21,Ordering Facility Name,7,Identifier Type Code,,
+ORC,21,Ordering Facility Name,8,Assigning Facility,1,Namespace ID
+ORC,21,Ordering Facility Name,8,Assigning Facility,2,Universal ID
+ORC,21,Ordering Facility Name,8,Assigning Facility,3,Universal ID Type
+ORC,21,Ordering Facility Name,9,Name Representation Code,,
+ORC,22,Ordering Facility Address,1,Street Address,,
+ORC,22,Ordering Facility Address,2,Other Designation,,
+ORC,22,Ordering Facility Address,3,City,,
+ORC,22,Ordering Facility Address,4,State or Province,,
+ORC,22,Ordering Facility Address,5,Zip or Postal Code,,
+ORC,22,Ordering Facility Address,6,Country Code,,
+ORC,22,Ordering Facility Address,7,Address Type,,
+ORC,22,Ordering Facility Address,8,Other Geographic Designation,,
+ORC,22,Ordering Facility Address,9,County/Parish Code,,
+ORC,22,Ordering Facility Address,10,Census Tract,,
+ORC,22,Ordering Facility Address,11,Address Representation Code,,
+ORC,23,Ordering Facility Phone Number,1,[NNN] [(999)]999-9999 [X99999] [B99999] [C any text],,
+ORC,23,Ordering Facility Phone Number,2,Telecommunication Use Code,,
+ORC,23,Ordering Facility Phone Number,3,Telecommunication Equipment Type,,
+ORC,23,Ordering Facility Phone Number,4,Email Address,,
+ORC,23,Ordering Facility Phone Number,5,Country Code,,
+ORC,23,Ordering Facility Phone Number,6,Area/City Code,,
+ORC,23,Ordering Facility Phone Number,7,Phone Number,,
+ORC,23,Ordering Facility Phone Number,8,Extension,,
+ORC,23,Ordering Facility Phone Number,9,Any Text,,
+ORC,24,Ordering Provider Address,1,Street Address,,
+ORC,24,Ordering Provider Address,2,Other Designation,,
+ORC,24,Ordering Provider Address,3,City,,
+ORC,24,Ordering Provider Address,4,State or Province,,
+ORC,24,Ordering Provider Address,5,Zip or Postal Code,,
+ORC,24,Ordering Provider Address,6,Country Code,,
+ORC,24,Ordering Provider Address,7,Address Type,,
+ORC,24,Ordering Provider Address,8,Other Geographic Designation,,
+ORC,24,Ordering Provider Address,9,County/Parish Code,,
+ORC,24,Ordering Provider Address,10,Census Tract,,
+ORC,24,Ordering Provider Address,11,Address Representation Code,,
