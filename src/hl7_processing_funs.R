@@ -4,306 +4,38 @@ library(stringr)
 hl7_element_names <- function(v) {
   #' Get dataframe with element names for HL7 fields
   #' 
-  #' Currently maps element names (at the field-level) for HL7 versions 2.3.1 and 2.5.1
+  #' Currently maps element names (at the field-level) for HL7 versions 2.3.1 and 2.5.1. Reads data from public github page.
   #' 
   #' Parameters:
   #'  v: version number. Should be "2.3.1" or "2.5.1". Defaults to 2.5.1
   #' Returns: df containing Segment (char), Name (char), and Field (int) fields
 
-  msh_231 = data.frame(
-    "Segment" = "MSH",
-    "Name" = c("Field Separator",
-               "Encoding Characters",
-               "Sending Application",
-               "Sending Facility",
-               "Receiving Application",
-               "Receiving Facility",
-               "Date/Time Of Message",
-               "Security",
-               "Message Type",
-               "Message Control ID",
-               "Processing ID",
-               "Version ID",
-               "Sequence Number",
-               "Continuation Pointer",
-               "Accept Acknowledgment Type",
-               "Application Acknowledgment Type",
-               "Country Code",
-               "Character Set",
-               "Principal Language Of Message",
-               "Alternate Character Set Handling Scheme")
-  ) %>% mutate("Field" = seq(length(Name)))
-  
-  msh_251 = rbind(
-    msh_231, 
-    data.frame("Segment" = "MSH",
-               "Name" = "Message Profile Identifier",
-               "Field" = nrow(msh_231)+1)
-  )
-  
-  obx_231 = data.frame(
-    "Segment" = "OBX",
-    "Name" = c("Set ID - OBX",
-               "Value Type",
-               "Observation Identifier",
-               "Observation Sub-ID",
-               "Observation Value",
-               "Units",
-               "References Range",
-               "Abnormal Flags",
-               "Probability",
-               "Nature of Abnormal Test",
-               "Observation Result Status",
-               "Date Last Obs Normal Values",
-               "User Defined Access Checks",
-               "Date/Time of the Observation",
-               "Producer's ID",
-               "Responsible Observer",
-               "Observation Method")
-  ) %>% mutate("Field" = seq(length(Name)))
-  
-  obx_251 = rbind(
-    obx_231, 
-    data.frame("Segment" = "OBX",
-               "Name" = c("Equipment Instance Identifier",
-                          "Date/Time of the Analysis",
-                          "Reserved for harmonization with V2.6",
-                          "Reserved for harmonization with V2.6",
-                          "Reserved for harmonization with V2.6",
-                          "Performing Organization Name",
-                          "Performing Organization Address",
-                          "Performing Organization Medical Director"),
-               "Field" = NA)
-  ) %>% mutate(Field = seq(length(Name)))
-  
-  obr_231 = data.frame(
-    "Segment" = "OBR",
-    "Name" = c("Set ID - OBR",
-               "Placer Order Number",
-               "Filler Order Number",
-               "Universal Service ID",
-               "Priority - OBR",
-               "Requested Date/Time",
-               "Observation Date/Time",
-               "Observation End Date/Time",
-               "Collection Volume",
-               "Collector Identifier",
-               "Specimen Action Code",
-               "Danger Code",
-               "Relevant Clinical Info",
-               "Specimen Received Date/Time",
-               "Specimen Source",
-               "Ordering Provider",
-               "Order Callback Phone Number",
-               "Placer Field 1",
-               "Placer Field 2",
-               "Filler Field 1",
-               "Filler Field 2",
-               "Results Rpt/Status Chng - Date/Time",
-               "Charge to Practice",
-               "Diagnostic Serv Sect ID",
-               "Result Status",
-               "Parent Result",
-               "Quantity/Timing",
-               "Result Copies To",
-               "Parent",
-               "Transportation Mode",
-               "Reason for Study",
-               "Principal Result Interpreter",
-               "Assistant Result Interpreter",
-               "Technician",
-               "Transcriptionist",
-               "Scheduled Date/Time",
-               "Number of Sample Containers",
-               "Transport Logistics of Collected Sample",
-               "Collector’s Comment",
-               "Transport Arrangement Responsibility",
-               "Transport Arranged",
-               "Escort Required",
-               "Planned Patient Transport Comment",
-               "Procedure Code",
-               "Procedure Code Modifier")
-  ) %>% mutate("Field" = seq(length(Name)))
-  
-  pid_231 = data.frame(
-    "Segment" = "PID",
-    "Name" = c("Set ID - PID",
-               "Patient ID",
-               "Patient Identifier List",
-               "Alternate Patient ID - PID",
-               "Patient Name",
-               "Mother’s Maiden Name",
-               "Date/Time of Birth",
-               "Sex",
-               "Patient Alias",
-               "Race",
-               "Patient Address",
-               "County Code",
-               "Phone Number - Home",
-               "Phone Number - Business",
-               "Primary Language",
-               "Marital Status",
-               "Religion",
-               "Patient Account Number",
-               "SSN Number - Patient",
-               "Driver's License Number - Patient",
-               "Mother's Identifier",
-               "Ethnic Group",
-               "Birth Place",
-               "Multiple Birth Indicator",
-               "Birth Order",
-               "Citizenship",
-               "Veterans Military Status",
-               "Nationality",
-               "Patient Death Date and Time",
-               "Patient Death Indicator")
-  ) %>% mutate("Field" = seq(length(Name)))
-  
-  pid_251 = rbind(pid_231,
-                  data.frame("Segment" = "PID",
-                             "Name" = c("Identity Unknown Indicator",
-                                        "Identity Reliability Code",
-                                        "Last Update Date/Time",
-                                        "Last Update Facility",
-                                        "Species Code",
-                                        "Breed Code",
-                                        "Strain",
-                                        "Production Class Code",
-                                        "Tribal Citizenship"),
-                             "Field" = NA)
-  ) %>% mutate(Field = seq(length(Name)))
-  
-  nte_231 = data.frame(
-    "Segment" = "NTE",
-    "Name" = c("Set ID - NTE",
-               "Source of Comment",
-               "Comment",
-               "Comment Type")
-  ) %>% mutate("Field" = seq(length(Name)))
-  
-  orc_231 = data.frame(
-    "Segment" = "ORC",
-    "Name" = c("Order Control",
-               "Placer Order Number",
-               "Filler Order Number",
-               "Placer Group Number",
-               "Order Status",
-               "Response Flag",
-               "Quantity/Timing",
-               "Parent",
-               "Date/Time of Transaction",
-               "Entered By",
-               "Verified By",
-               "Ordering Provider",
-               "Enterer’s Location",
-               "Call Back Phone Number",
-               "Order Effective Date/Time",
-               "Order Control Code Reason",
-               "Entering Organization",
-               "Entering Device",
-               "Action By",
-               "Advanced Beneficiary Notice Code",
-               "Ordering Facility Name",
-               "Ordering Facility Address",
-               "Ordering Facility Phone Number",
-               "Ordering Provider Address")
-  ) %>% mutate("Field" = seq(length(Name)))
-  
-  nk1_231 = data.frame(
-    "Segment" = "NK1",
-    "Name" = c("Set ID - NK1",
-               "Name",
-               "Relationship",
-               "Address",
-               "Phone Number",
-               "Business Phone Number",
-               "Contact Role",
-               "Start Date",
-               "End Date",
-               "Next of Kin / Associated Parties Job Title",
-               "Next of Kin / Associated Parties Job Code/Class",
-               "Next of Kin / Associated Parties Employee Number",
-               "Organization Name - NK1",
-               "Marital Status",
-               "Sex",
-               "Date/Time of Birth",
-               "Living Dependency",
-               "Ambulatory Status",
-               "Citizenship",
-               "Primary Language",
-               "Living Arrangement",
-               "Publicity Code",
-               "Protection Indicator",
-               "Student Indicator",
-               "Religion",
-               "Mother’s Maiden Name",
-               "Nationality",
-               "Ethnic Group",
-               "Contact Reason",
-               "Contact Person’s Name",
-               "Contact Person’s Telephone Number",
-               "Contact Person’s Address",
-               "Next of Kin/Associated Party’s Identifiers",
-               "Job Status",
-               "Race",
-               "Handicap",
-               "Contact Person Social Security Number"
-    )
-  ) %>% mutate("Field" = seq(length(Name)))
-  
-  sft_251 = data.frame(
-    "Segment" = "SFT",
-    "Name" = c("Software Vendor Organization",
-               "Software Certified Version or Release Number",
-               "Software Product Name",
-               "Software Binary ID",
-               "Software Product Information",
-               "Software Install Date")
-  ) %>% mutate("Field" = seq(length(Name)))
-  
-  spm_251 = data.frame(
-    "Segment" = "SPM",
-    "Name" = c("Set ID -- SPM",
-               "Specimen ID",
-               "Specimen Parent IDs",
-               "Specimen Type",
-               "Specimen Type Modifier",
-               "Specimen Additives",
-               "Specimen Collection Method",
-               "Specimen Source Site",
-               "Specimen Source Site Modifier",
-               "Specimen Collection Site",
-               "Specimen Role",
-               "Specimen Collection Amount",
-               "Grouped Specimen Count",
-               "Specimen Description",
-               "Specimen Handling Code",
-               "Specimen Risk Code",
-               "Specimen Collection Date/Time",
-               "Specimen Received Date/Time",
-               "Specimen Expiration Date/Time",
-               "Specimen Availability",
-               "Specimen Reject Reason",
-               "Specimen Quality",
-               "Specimen Appropriateness",
-               "Specimen Condition",
-               "Specimen Current Quantity",
-               "Number of Specimen Containers",
-               "Container Type",
-               "Container Condition",
-               "Specimen Child Role")
-  ) %>% mutate("Field" = seq(length(Name)))
-  
   if (v == "2.3.1") {
-    return(rbind(msh_231, obx_231, obr_231, pid_231, nte_231, orc_231, nk1_231, sft_251, spm_251))
-  } else if (v == "2.5.1") {
-    return(rbind(msh_251, obx_251, obr_231, pid_251, nte_231, orc_231, nk1_231, sft_251, spm_251))
+    hl7_mapping = read.csv(url("https://raw.githubusercontent.com/NW-PaGe/covid_seq_elr/refs/heads/main/data/hl7_231_mapping.csv"),
+                           na.strings = c("", "NA"))
   } else {
-    warning("Version != 2.3.1 or 2.5.1; parsing with 2.5.1 schema")
-    return(rbind(msh_251, obx_251, obr_231, pid_251, nte_231, orc_231, nk1_231, sft_251, spm_251))
-  }
+    if (v != "2.5.1") warning("Version != 2.3.1 or 2.5.1; parsing with 2.5.1 schema")
+    hl7_mapping = read.csv(url("https://raw.githubusercontent.com/NW-PaGe/covid_seq_elr/refs/heads/main/data/hl7_251_mapping.csv"),
+                           na.strings = c("", "NA"))
+  } 
+  # Create additional rows for messages w/empty component/subcomponent even if they can exist:
+  hl7_empty_subcomponent = hl7_mapping %>% mutate(Subcomponent = NA, Subcomponent_Name = NA)
+  hl7_empty_component = hl7_empty_subcomponent %>% mutate(Component = NA, Component_Name = NA)
+  # Combine all variations of component/subcomponent emptiness and get unique rows
+  hl7_mapping_final = rbind(hl7_mapping, 
+                            hl7_empty_subcomponent, 
+                            hl7_empty_component) %>%
+    distinct() %>% 
+    mutate(
+      Name = case_when(
+        is.na(Component_Name) & is.na(Subcomponent_Name) ~ Field_Name,
+        is.na(Subcomponent_Name) ~ paste(Field_Name, Component_Name, sep = ": "),
+        T ~ paste(Field_Name, Component_Name, Subcomponent_Name, sep = ": ")
+      )
+    )
+  
+  return(hl7_mapping_final)
 }
-
 
 # Convert HL7 Strings into a table
 parse_hl7 <- function(hl7, remove_pii=TRUE) {
@@ -398,61 +130,80 @@ parse_hl7 <- function(hl7, remove_pii=TRUE) {
                                   ifelse(length(subcomponents) > 1, paste0(".", sub_i), "") # include the subcomponent (if the component has more than one subcomponent)
                                 ),
                                 "Value" = subcomponents[sub_i] # set the raw value
-            ) %>% 
-              left_join(element_names_df, by=c("Segment", "Field")) # Join the field names as a new field ("Name")
-            
-            if (remove_pii) { # default is TRUE; if TRUE, remove potential PII
-              date_name = grepl("date|time", new_df$Name, ignore.case=T) # find fields with date or time in name
-              id_fields= c("ordering facility name", 
-                           "address", 
-                           "Message Control ID", 
-                           "Security", 
-                           "Ordering Provider", 
-                           "Performing Organization Medical Director",
-                           "Producer's ID", 
-                           "Relevant Clinical Info", 
-                           "ssn", 
-                           "driver's license", 
-                           "Mother's",
-                           "Patient Identifier", 
-                           "patient", 
-                           "phone", 
-                           "county", 
-                           "race",
-                           "sex", 
-                           "marital", 
-                           "religion", 
-                           "ethnic")
-              id_name = grepl(paste0(id_fields, collapse="|"), new_df$Name, ignore.case=TRUE) # find fields that likely contain identifiers
-              id_name = id_name & new_df$Name != "Software Product Name" # remove Software name from masked ids
-              id_name = id_name | new_df$Segment == "PID" # include any PID segment fields
-              # mask dates
-              new_df[date_name, "Value"] = gsub("(^|\\D)(\\d{8})($|\\D)", # find YYYYMMDD strings 
-                                                "\\1YYYYMMDD\\3", 
-                                                new_df[date_name, "Value"])
-              new_df[date_name, "Value"] = gsub("(^|\\D)(\\d{12})($|\\D)", # find YYYYMMDDHHMM strings
-                                                "\\1YYYYMMDDHHMM\\3", 
-                                                new_df[date_name, "Value"])
-              new_df[date_name, "Value"] = gsub("(^|\\D)(\\d{14})($|\\D)", # find YYYYMMDDHHMMSS strings
-                                                "\\1YYYYMMDDHHMMSS\\3", 
-                                                new_df[date_name, "Value"])
-              # mask identifiers
-              new_df[id_name, "Value"] <- gsub("\\w|\\s", "__char__", new_df[id_name, "Value"])
-              # replace long strings (8+) of removed characters with some length of X's (between 5 and 10 repeats) 
-              while(any(grepl('(__char__){8,}', new_df$Value))) {
-                new_df$Value = sub('__char____char____char____char____char____char____char__(__char__)+', 
-                                   paste(rep("X", round(min(10, max(5, rnorm(1, 7, 1.75))))), collapse=""), new_df$Value)
-              }
-              new_df$Value = gsub("__char__", "X", new_df$Value, fixed=TRUE) # replace any shorter length of removed values
-            }
+            )
             df = rbind(df, new_df) # append the new df to the growing final df
           }
         }
       }
     }    
   }
-  df$Value[df$Position == "MSH-2"] = hl7_fields_seps # re=set the separator text that was removed earlier
   df$Order = seq_along(df$Segment) # Create Index to track absolute position within message
+  # Join the field + component (if present) + subcomponent (if present) names as a new field ("Name"):
+  df = left_join(df, element_names_df, by=c("Segment", "Field", "Component", "Subcomponent")) 
+  # join missing names if needed:
+  missing_name = filter(df, is.na(Name))
+  if (nrow(missing_name) > 0) {
+    missing_name = missing_name %>%
+      left_join(element_names_df, by=c("Segment", "Field", "Component"), suffix = c("", "_drop")) %>% # Join names w/o subcomponent
+      mutate(Name_no_sub = if_else(!is.na(Name_drop) & !is.na(Component_Name_drop), # create name by combining Field name and Component name
+                                   paste(Name_drop, Component_Name_drop, sep = ": "),
+                                   NA)) %>%
+      select(-ends_with("_drop")) %>% 
+      left_join(element_names_df, by=c("Segment", "Field"), suffix = c("", "_drop"), relationship = "many-to-many") %>% 
+      rename(Name_no_comp = Field_Name_drop) %>% 
+      select(-ends_with("_drop")) %>%
+      mutate(Name = case_when(!is.na(Name_no_sub) ~ Name_no_sub, !is.na(Name_no_comp) ~ Name_no_comp)) %>% 
+      select(-Name_no_sub, -Name_no_comp) %>% 
+      distinct()
+    # join rows with missing names (which should now be filled) with the rows that originally were not missing
+    df = df %>% filter(!is.na(Name)) %>% rbind(missing_name) %>% arrange(Order)
+  }
+  # remove pii if indicated
+  if (remove_pii) { # default is TRUE; if TRUE, remove potential PII
+    date_name = grepl("date|time", df$Name, ignore.case=T) # find fields with date or time in name
+    id_fields= c("ordering facility name", 
+                 "address", 
+                 "Message Control ID", 
+                 "Security", 
+                 "Ordering Provider", 
+                 "Performing Organization Medical Director",
+                 "Producer's ID", 
+                 "Relevant Clinical Info", 
+                 "ssn", 
+                 "driver's license", 
+                 "Mother's",
+                 "Patient Identifier", 
+                 "patient", 
+                 "phone", 
+                 "county", 
+                 "race",
+                 "sex", 
+                 "marital", 
+                 "religion", 
+                 "ethnic")
+    id_name = grepl(paste0(id_fields, collapse="|"), df$Name, ignore.case=TRUE) # find fields that likely contain identifiers
+    id_name = id_name & df$Name != "Software Product Name" # remove Software name from masked ids
+    id_name = id_name | df$Segment == "PID" # include any PID segment fields
+    # mask dates
+    df[date_name, "Value"] = gsub("(^|\\D)(\\d{8})($|\\D)", # find YYYYMMDD strings 
+                                      "\\1YYYYMMDD\\3", 
+                                      df[date_name, "Value"])
+    df[date_name, "Value"] = gsub("(^|\\D)(\\d{12})($|\\D)", # find YYYYMMDDHHMM strings
+                                      "\\1YYYYMMDDHHMM\\3", 
+                                      df[date_name, "Value"])
+    df[date_name, "Value"] = gsub("(^|\\D)(\\d{14})($|\\D)", # find YYYYMMDDHHMMSS strings
+                                      "\\1YYYYMMDDHHMMSS\\3", 
+                                      df[date_name, "Value"])
+    # mask identifiers
+    df[id_name, "Value"] <- gsub("\\w|\\s", "__char__", df[id_name, "Value"])
+    # replace long strings (8+) of removed characters with some length of X's (between 5 and 10 repeats) 
+    while(any(grepl('(__char__){8,}', df$Value))) {
+      df$Value = sub('__char____char____char____char____char____char____char__(__char__)+', 
+                         paste(rep("X", round(min(10, max(5, rnorm(1, 7, 1.75))))), collapse=""), df$Value)
+    }
+    df$Value = gsub("__char__", "X", df$Value, fixed=TRUE) # replace any shorter length of removed values
+  }
+  df$Value[df$Position == "MSH-2"] = hl7_fields_seps # reset the separator text that was removed earlier
   # Order cols in return df:
   df = select(df, Order, Value, Position, Name, Segment, Instance, Field, Repetition, Component, Subcomponent)
   
