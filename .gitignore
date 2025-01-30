@@ -60,6 +60,8 @@ rsconnect/
 !data/example_hl7.csv
 !data/example_hl7.rds
 !data/example_hl7_viz.csv
+!data/hl7_231_mapping.csv
+!data/hl7_251_mapping.csv
 
 # Scripts dir and code
 scripts/
