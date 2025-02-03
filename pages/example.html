@@ -944,7 +944,6 @@ ui &lt;- fluidPage(
 
 
 # import server code
-library(purrr)
 library(DT)
 
 server &lt;- function(input, output, session) {
@@ -960,14 +959,16 @@ server &lt;- function(input, output, session) {
   })
   output$hl7_table &lt;- DT::renderDT({
     if (input$display_format == "Table") {
-      example_tbl &lt;- purrr::map(gsub('&lt;br&gt;', '\r\n', viz_df$String[selection()], fixed=T),
-                                function(x) parse_hl7(x, remove_pii = F))[[1]]
+      example_tbl &lt;- parse_hl7(
+        gsub('&lt;br&gt;', '\r\n', viz_df$String[selection()], fixed=T),
+        remove_pii = F
+        )
       example_tbl$Segment &lt;- dplyr::if_else(
         is.na(example_tbl$Instance), 
         example_tbl$Segment, 
         paste0(example_tbl$Segment, '[', example_tbl$Instance, ']') 
       )
-      example_tbl &lt;- select(example_tbl, Segment, Position, Name, Value)
+      example_tbl &lt;- select(example_tbl, Order, Segment, Position, Name, Value)
       example_tbl$Segment &lt;- as.factor(example_tbl$Segment)
       # Create searchCols list dynamically
       searchCols_val &lt;- vector("list", ncol(example_tbl)) # add one because row names are included at front
@@ -983,7 +984,7 @@ server &lt;- function(input, output, session) {
         ),  
         escape = FALSE, # Allow tool tips labels in html
         filter = "top", # Add filters to top of table
-        selection = list(mode="multiple", target="row+column"), # make 
+        selection = list(mode="single", target="row"), # make 
         options = list(
           search = list(regex = TRUE, smart = FALSE), # Allow for regex searches
           searchCols = searchCols_val, # set regex for "Value" field
@@ -999,36 +1000,36 @@ server &lt;- function(input, output, session) {
             list(
               extend = 'collection',
               text = "View Sequencing Only",
-              action = DT::JS("
-                                function (e, dt, node, config) {
-                                  // Define the regex pattern for filtering
-                                  var pattern = /strain|accession|lineage/i;
-                                  // Clear any existing column filter for the column of interest
-                                  dt.column(3).search('');
-                                  // Apply the regex filter to the column
-                                  dt.column(3).search(pattern.source, true, false).draw();
-                                }
-                              ")
+              action = DT::JS(
+              "function (e, dt, node, config) {",
+              #    Define the regex pattern for filtering
+              "   var pattern = /strain|accession|lineage/i;",
+              #    Clear any existing column filter for the column of interest
+              "   dt.column(4).search('');",
+              #    Apply the regex filter to the Value column
+              "   dt.column(4).search(pattern.source, true, false).draw();",
+              "}"
+              )
             ),
             list(
               extend = 'collection',
               text = 'View ALL',
-              action = DT::JS("
-                                function (e, dt, node, config) {
-                                  // Clear any filters applied to the column
-                                  dt.column(3).search('').draw();
-                                 }
-                              ")
+              action = DT::JS(
+              "function (e, dt, node, config) {",
+              # Clear any filters applied to the Value column
+              "   dt.column(4).search('').draw();",
+              "}"
+              )
             )
           ),
           initComplete = DT::JS(
             "function(settings, json) {",
             # Automatically apply the sequencing only filter
-            "var table = this.api();",
-            "var pattern = /strain|accession|lineage/i;",
-            "table.column(3).search(pattern.source, true, false).draw();",
+            "   var table = this.api();",
+            "   var pattern = /strain|accession|lineage/i;",
+            "   table.column(4).search(pattern.source, true, false).draw();",
             #  Change header color
-            "$(this.api().table().header()).css({'background-color': '#C3B1E1'});",
+            "   $(this.api().table().header()).css({'background-color': '#C3B1E1'});",
             "}"
           )
         )
