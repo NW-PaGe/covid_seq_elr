@@ -912,6 +912,8 @@ generate_hl7 &lt;- function(df, field_sep="|", segment_sep="\r\n") {
 viz_df &lt;- read.csv(url("https://raw.githubusercontent.com/NW-PaGe/covid_seq_elr/refs/heads/main/data/example_hl7_viz.csv"))
 
 # import ui code
+library(shiny)
+
 ui &lt;- fluidPage(
   # Custom CSS tags to adjust DT button colors
   tags$style(HTML("
@@ -1013,7 +1015,7 @@ server &lt;- function(input, output, session) {
               action = DT::JS(
               "function (e, dt, node, config) {",
               #    Define the regex pattern for filtering
-              "   var pattern = /strain|accession|lineage/i;",
+              "   var pattern = /&lt;span/i;",
               #    Clear any existing column filter for the column of interest
               "   dt.column(4).search('');",
               #    Apply the regex filter to the Value column
@@ -1036,7 +1038,7 @@ server &lt;- function(input, output, session) {
             "function(settings, json) {",
             # Automatically apply the sequencing only filter
             "   var table = this.api();",
-            "   var pattern = /strain|accession|lineage/i;",
+            "   var pattern = /&lt;span/i;",
             "   table.column(4).search(pattern.source, true, false).draw();",
             #  Change header color
             "   $(this.api().table().header()).css({'background-color': '#C3B1E1'});",
