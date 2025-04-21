@@ -57,7 +57,7 @@ server <- function(input, output, session) {
               action = DT::JS(
               "function (e, dt, node, config) {",
               #    Define the regex pattern for filtering
-              "   var pattern = /strain|accession|lineage/i;",
+              "   var pattern = /<span/i;",
               #    Clear any existing column filter for the column of interest
               "   dt.column(4).search('');",
               #    Apply the regex filter to the Value column
@@ -80,7 +80,7 @@ server <- function(input, output, session) {
             "function(settings, json) {",
             # Automatically apply the sequencing only filter
             "   var table = this.api();",
-            "   var pattern = /strain|accession|lineage/i;",
+            "   var pattern = /<span/i;",
             "   table.column(4).search(pattern.source, true, false).draw();",
             #  Change header color
             "   $(this.api().table().header()).css({'background-color': '#C3B1E1'});",

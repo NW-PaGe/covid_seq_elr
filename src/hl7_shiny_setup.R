@@ -12,47 +12,6 @@ if (FALSE) {
   hl7_messages <- readRDS('data/example_hl7.rds')
 }
 
-# ### DEV
-# # Mask everything besides key values
-# for (i in 1:nrow(hl7_messages)) {
-#   example_tbl <- hl7_messages$hl7_table[[i]]
-# 
-#   submitter <- hl7_messages$submitter[i]
-# 
-#   lineage <- stringr::str_extract(example_tbl$Value, 'SARS-CoV-2 (.+) lineage', group=1)
-#   lineage <- sort(lineage) # Remove NA values and sort the rest
-#   if (length(lineage) > 1) {
-#     warning(paste0("2+ lineage strings extracted from df. Continuing with first string:\t", lineage[1]))
-#   }
-# 
-#   lineage_mask <- grepl(lineage, example_tbl$Value, fixed=TRUE) # find values with full lineage (e.g. A.B.C.1.2.3)
-#   lineage_short = gsub('[^A-Z0-9]+', '', lineage, perl=TRUE) # create shortened lineage (e.g., ABC123)
-#   lineage_mask <- lineage_mask | grepl(lineage_short, example_tbl$Value, fixed=TRUE) # find values with shortened lineage
-# 
-#   strain_background <- ifelse(submitter == 'UW', '#969f84', '#bac0ae')
-#   strain_tooltip <- ifelse(submitter == 'UW', 'Full NCBI/GISAID strain name', 'Partial NCBI/GISAID strain name')
-#   strain_mask <- submitter %in% c('LabCorp', 'UW', 'Helix') & example_tbl$Value %in% example_tbl$Value[example_tbl$Position %in% 'OBX[2]-5']
-#   strain_mask <- strain_mask | (submitter == 'Quest' & example_tbl$Value %in% example_tbl$Value[example_tbl$Position %in% c('OBX[3]-5', 'SPM-2.2.1')])
-# 
-#   clin_acc_labcorp_mask <- submitter == 'Labcorp' & example_tbl$Value %in% example_tbl$Value[example_tbl$Position %in% 'OBR-3']
-#   clin_acc_quest_uw_mask <- submitter %in% c('Quest', 'UW') & example_tbl$Value %in% example_tbl$Value[example_tbl$Position %in% 'SPM-2.1.1']
-#   clin_acc_mask <- clin_acc_labcorp_mask | clin_acc_quest_uw_mask
-# 
-#   v_mask <- example_tbl$Position=="MSH-12"
-#   v <-  example_tbl$Value[v_mask]
-#   seps_mask <- example_tbl$Position=="MSH-2"
-#   seps <-  example_tbl$Value[seps_mask]
-#   example_tbl$Value[!(lineage_mask | strain_mask | clin_acc_mask)] <- gsub('[^\\s]', 'x', example_tbl$Value[!(lineage_mask | strain_mask | clin_acc_mask)], perl=T)
-#   example_tbl$Value[example_tbl$Position=="MSH-1"] <- "MSH"
-#   example_tbl$Value[seps_mask] <- seps
-#   example_tbl$Value[v_mask] <- v
-# 
-#   hl7_messages$hl7_table[[i]] <- example_tbl
-#   hl7_messages$hl7_string[i] = generate_hl7(hl7_messages$hl7_table[[i]])
-# 
-# }
-# ### END DEV
-
 for (i in 1:nrow(hl7_messages)) {
   
   example_tbl <- hl7_messages$hl7_table[[i]]

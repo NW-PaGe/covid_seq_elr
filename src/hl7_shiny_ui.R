@@ -1,3 +1,5 @@
+library(shiny)
+
 ui <- fluidPage(
   # Custom CSS tags to adjust DT button colors
   tags$style(HTML("
