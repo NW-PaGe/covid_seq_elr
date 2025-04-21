@@ -20,12 +20,12 @@ This website gives an overview of how COVID-19 sequencing metadata are transmitt
 
 \
 
-**ELR onboarding dates:**
+**ELR submission dates:**
 
 -   **LabCorp**: September 2021
 -   **Quest**: September 2021
--   **Helix**: October 2021
--   **Aegis**: February 2022 (submissions ended April 2023)
+-   **Helix**: October 2021 -- February 2024
+-   **Aegis**: February 2022 -- April 2023
 -   **UW**: January 2023
 \
 \
