@@ -180,9 +180,19 @@ parse_hl7 <- function(hl7, remove_pii=TRUE) {
                  "sex", 
                  "marital", 
                  "religion", 
-                 "ethnic")
+                 "ethnic",
+                 "universal id",
+                 "namespace id",
+                 "entity identifier",
+                 "organization",
+                 "software",
+                 "placer",
+                 "filler",
+                 "producer",
+                 "observer",
+                 "message type",
+                 "observation method")
     id_name = grepl(paste0(id_fields, collapse="|"), df$Name, ignore.case=TRUE) # find fields that likely contain identifiers
-    id_name = id_name & df$Name != "Software Product Name" # remove Software name from masked ids
     id_name = id_name | df$Segment == "PID" # include any PID segment fields
     # mask dates
     df[date_name, "Value"] = gsub("(^|\\D)(\\d{8})($|\\D)", # find YYYYMMDD strings 
