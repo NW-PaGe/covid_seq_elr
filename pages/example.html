@@ -818,11 +818,11 @@ parse_hl7 &lt;- function(hl7, remove_pii=TRUE) {
                  "ethnic",
                  "universal id",
                  "namespace id",
-                 "entity identifier",
+                 # "entity identifier",
                  "organization",
                  "software",
-                 "placer",
-                 "filler",
+                 # "placer",
+                 # "filler",
                  "producer",
                  "observer",
                  "message type",
@@ -840,7 +840,7 @@ parse_hl7 &lt;- function(hl7, remove_pii=TRUE) {
                                       "\\1YYYYMMDDHHMMSS\\3", 
                                       df[date_name, "Value"])
     # mask identifiers
-    df[id_name, "Value"] &lt;- gsub("\\w|\\s", "__char__", df[id_name, "Value"])
+    df[id_name, "Value"] &lt;- gsub(".", "__char__", df[id_name, "Value"])
     # replace long strings (8+) of removed characters with some length of X's (between 5 and 10 repeats) 
     while(any(grepl('(__char__){8,}', df$Value))) {
       df$Value = sub('__char____char____char____char____char____char____char__(__char__)+', 
