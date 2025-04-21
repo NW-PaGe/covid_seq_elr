@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.40">
+<meta name="generator" content="quarto-1.6.43">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -35,10 +35,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-704a3d686fdb3e6b26ef47c77620618f.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-9cf0e90b0932c3e86aa4df0e64a8a7a9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-986f2b8caf805be954dd655835706d8d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-2215e0334d10e59dabbacc71fc92f346.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <meta name="shinylive:serviceworker_dir" content="..">
 <script src="../site_libs/quarto-contrib/shinylive-0.9.1/shinylive/load-shinylive-sw.js" type="module"></script>
 <script src="../site_libs/quarto-contrib/shinylive-0.9.1/shinylive/run-python-blocks.js" type="module"></script>
@@ -815,9 +815,19 @@ parse_hl7 &lt;- function(hl7, remove_pii=TRUE) {
                  "sex", 
                  "marital", 
                  "religion", 
-                 "ethnic")
+                 "ethnic",
+                 "universal id",
+                 "namespace id",
+                 "entity identifier",
+                 "organization",
+                 "software",
+                 "placer",
+                 "filler",
+                 "producer",
+                 "observer",
+                 "message type",
+                 "observation method")
     id_name = grepl(paste0(id_fields, collapse="|"), df$Name, ignore.case=TRUE) # find fields that likely contain identifiers
-    id_name = id_name &amp; df$Name != "Software Product Name" # remove Software name from masked ids
     id_name = id_name | df$Segment == "PID" # include any PID segment fields
     # mask dates
     df[date_name, "Value"] = gsub("(^|\\D)(\\d{8})($|\\D)", # find YYYYMMDD strings 
