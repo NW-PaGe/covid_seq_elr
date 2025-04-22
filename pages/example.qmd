@@ -45,7 +45,7 @@ color_legend = matrix(c(text_spec('Full NCBI/GISAID strain name', 'html', backgr
                         text_spec('Lineage', 'html', background = '#aebccb'),
                         text_spec('Clinical accession', 'html', background = '#cbb3bf'),
                         text_spec('Sequence reason', 'html', background = '#c9b57e')),
-                      nrow = 4, ncol = 1)
+                      nrow = 5, ncol = 1)
 
 ```
 
