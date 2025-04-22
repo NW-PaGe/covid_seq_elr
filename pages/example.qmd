@@ -22,20 +22,14 @@ name_legend <- data.frame("Abbreviation" =
                               ,'SPEC_COLL_DTTM'
                               ,'FILLER_ORD_NUM'
                               ,'RESULT'
-                              ,'SPEC_FILLER_ID'
-                              ,'FILLER_ORD_ID'
-                              ,'PLACER_ORD_ID'
-                              ,'SPEC_PLACER_ID'),
+                              ,'REQUEST_NOTE'),
                           "WDRS.Name" = 
                             c('PATIENT__CENTRIC__OBSERVATION'
                               ,'PATIENT__CENTRIC__OBSERVATION__VALUE'
                               ,'SPECIMEN__COLLECTION__DTTM'
                               ,'FILLER__ORDER__NUM'
                               ,'TEST__RESULT'
-                              ,'SPECIMEN_FILLER_ID_SPM0202'
-                              ,'FILLER_ORDER_ID_OBR03'
-                              ,'PLACER_ORDER_ID_OBR02'
-                              ,'SPECIMEN_PLACER_ID_SPM0201')
+                              ,'TEST__REQUEST__NOTE')
 ) %>% 
   filter(WDRS.Name %in% names(example))
 
@@ -49,7 +43,8 @@ name_legend <- name_legend %>% rename(`WDRS Name` = WDRS.Name)
 color_legend = matrix(c(text_spec('Full NCBI/GISAID strain name', 'html', background = '#969f84'),
                         text_spec('Partial NCBI/GISAID strain name', 'html', background = '#bac0ae'),
                         text_spec('Lineage', 'html', background = '#aebccb'),
-                        text_spec('Clinical accession', 'html', background = '#cbb3bf')),
+                        text_spec('Clinical accession', 'html', background = '#cbb3bf'),
+                        text_spec('Sequence reason', 'html', background = '#c9b57e')),
                       nrow = 4, ncol = 1)
 
 ```
@@ -62,11 +57,14 @@ This table is intended to give a visual of how data are structured at the end of
 
 Values are color-coded to reflect the piece of sequencing metadata they correspond to:
 
--   **Strain names**. Also labelled *isolate* in GenBank or *virus name* in GISAID. These values may be full/complete or partial. As an example, the strain name for a sequence in GenBank is `WA-CDC-LAB-12345`. A lab might submit a full strain name via ELR (`WA-CDC-LAB-12345`), *or* they might submit a partial string (`12345`) which must be combined with lab-specific logic to create the final, full strain name.
+-   **<span style="background-color: #969f84;">Strain </span><span style="background-color: #bac0ae;">names</span>**. Also labelled *isolate* in GenBank or *virus name* in GISAID. These values may be full/complete or partial. As an example, the strain name for a sequence in GenBank is `WA-CDC-LAB-12345`. A lab might submit a <span style="background-color: #969f84;">full</span> strain name via ELR (`WA-CDC-LAB-12345`), *or* they might submit a <span style="background-color: #bac0ae;">partial</span> string (`12345`) which must be combined with lab-specific logic to create the final, full strain name.
 
--   [**Pango**](https://cov-lineages.org/){target="_blank"} **lineages**
+-   [**Pango**](https://cov-lineages.org/){target="_blank"} <span style="background-color: #aebccb;">**lineages**</span>
 
--   **Clinical accessions**. This is the value used to link a sequencing result to a specific specimen and/or lab test. This is usually submitted as the filler order number. However, a variety of factors can influence where these data might be in ELR submissions, such as which lab is submitting the sequencing results to WA DOH and whether the same or different labs conducted the diagnostic and sequencing tests.
+-   <span style="background-color: #cbb3bf;">**Clinical accessions**</span>. This is the value used to link a sequencing result to a specific specimen and/or lab test. This is usually submitted as the filler order number. However, a variety of factors can influence where these data might be in ELR submissions, such as which lab is submitting the sequencing results to WA DOH and whether the same or different labs conducted the diagnostic and sequencing tests.
+
+-   <span style="background-color: #c9b57e;">**Sequence reasons**</span>. These come from a defined list of possible reasons a lab may sequence a sample. Example values include _SENTINEL SURVEILLANCE_, _OUTBREAK_, _TRAVEL ASSOCIATED_, _OTHER_.
+
 
 ### HL7 Example Data {#hl7}
 
@@ -106,15 +104,15 @@ Raw data set: [![](../images/download_icon_csv_invert.png){width="44"}](https://
 #| results: asis
 
 example_temp <- example %>%
-  arrange(desc(CASE_ID)) %>% 
   # Change df values to html-formatted strings with background color and tooltip formatting specified:
-  mutate(PCO_VALUE = case_when(
-    PCO_VALUE == '' ~ '', # if empty no changes
-    SUBMITTER == 'UW' ~ 
-      text_spec(PCO_VALUE, "html", background = '#969f84', tooltip = 'Full NCBI/GISAID strain name'),
-    SUBMITTER == 'LabCorp' | (SUBMITTER %in% c('Helix', 'Quest') & grepl('Sequencing study identifier', PCO, fixed = T)) ~
-      text_spec(PCO_VALUE, "html", background = '#bac0ae', tooltip = 'Partial NCBI/GISAID strain name'),
-    T ~ PCO_VALUE),
+  mutate(
+    PCO_VALUE = case_when(
+      PCO_VALUE == '' ~ '', # if empty no changes
+      SUBMITTER == 'UW' ~ 
+        text_spec(PCO_VALUE, "html", background = '#969f84', tooltip = 'Full NCBI/GISAID strain name'),
+      SUBMITTER == 'LabCorp' | (SUBMITTER %in% c('Helix', 'Quest') & grepl('Sequencing study identifier', PCO, fixed = T)) ~
+        text_spec(PCO_VALUE, "html", background = '#bac0ae', tooltip = 'Partial NCBI/GISAID strain name'),
+      T ~ PCO_VALUE),
     
     FILLER_ORD_NUM = case_when(
       FILLER_ORD_NUM == '' ~ '', # if empty no changes
@@ -130,31 +128,11 @@ example_temp <- example %>%
         text_spec(RESULT, "html", background = '#aebccb', tooltip = 'Lineage'),
       T ~ RESULT),
     
-    PLACER_ORD_ID = case_when(
-      PLACER_ORD_ID == '' ~ '', # if empty no changes
-      SUBMITTER == 'UW' ~
-        text_spec(PLACER_ORD_ID, "html", background = '#cbb3bf', tooltip = 'Clinical accession'),
-      T ~ PLACER_ORD_ID),
-    
-    FILLER_ORD_ID = case_when(
-      FILLER_ORD_ID == '' ~ '', # if empty no changes
-      SUBMITTER %in% c('Helix', 'Quest') & PCO == '' ~
-        text_spec(FILLER_ORD_ID, "html", background = '#bac0ae', tooltip = 'Partial NCBI/GISAID strain name'),
-      SUBMITTER %in% c('LabCorp', 'UW') ~
-        text_spec(FILLER_ORD_ID, "html", background = '#cbb3bf', tooltip = 'Clinical accession'),
-      T ~ FILLER_ORD_ID),
-    
-    SPEC_PLACER_ID = case_when(
-      SPEC_PLACER_ID == '' ~ '', # if empty no changes
-      SUBMITTER == 'UW' | (SUBMITTER == 'Helix' & PCO == '') ~
-        text_spec(SPEC_PLACER_ID, "html", background = '#cbb3bf', tooltip = 'Clinical accession'),
-      T ~ SPEC_PLACER_ID),
-    
-    SPEC_FILLER_ID = case_when(
-      SPEC_FILLER_ID == '' ~ '', # if empty no changes
-      SUBMITTER %in% c('Helix', 'Quest') & PCO == '' ~ 
-        text_spec(SPEC_FILLER_ID, "html", background = '#bac0ae', tooltip = 'Partial NCBI/GISAID strain name'),
-      T ~ SPEC_FILLER_ID))
+    REQUEST_NOTE = case_when(
+      REQUEST_NOTE == '' ~ '', # if empty no changes
+      SUBMITTER == 'UW' ~ text_spec(REQUEST_NOTE, "html", background = '#c9b57e', tooltip = 'Sequence reason'),
+      T ~ REQUEST_NOTE)
+  )
 
 example_temp %>% 
   # remove submitter row (this gets added later as a label as part of pack_rows)
@@ -168,7 +146,7 @@ example_temp %>%
   # Change row for every other case_id to have gray background 
   row_spec(which(as.numeric(example_temp$CASE_ID) %% 2 == 0), background = 'lightgray') %>% 
   # Add labs as label for groups:
-  pack_rows(index = table(example_temp$SUBMITTER)[order(names(table(example_temp$SUBMITTER)), decreasing = TRUE)], 
+  pack_rows(index = table(example_temp$SUBMITTER)[unique(example_temp$SUBMITTER)], 
             label_row_css = 'text-align:center;',
             hline_before = T,
             hline_after = T,

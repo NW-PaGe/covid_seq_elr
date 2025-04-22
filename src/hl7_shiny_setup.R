@@ -27,18 +27,22 @@ for (i in 1:nrow(hl7_messages)) {
   lineage_mask <- grepl(lineage, example_tbl$Value, fixed=TRUE) # find values with full lineage (e.g. A.B.C.1.2.3)
   lineage_short = gsub('[^A-Z0-9]+', '', lineage, perl=TRUE) # create shortened lineage (e.g., ABC123)
   lineage_mask <- lineage_mask | grepl(lineage_short, example_tbl$Value, fixed=TRUE) # find values with shortened lineage
-  example_tbl$Value[lineage_mask] <- text_spec(example_tbl$Value[lineage_mask], 'html', background='#aebccb', tooltip='Lineage') # add tooltip and highlight to lineage
+  example_tbl$Value[lineage_mask] <- text_spec(example_tbl$Value[lineage_mask], 'html', background='#aebccb', tooltip='Lineage') # add tooltip and highlight lineage
   
   strain_background <- ifelse(submitter == 'UW', '#969f84', '#bac0ae')
   strain_tooltip <- ifelse(submitter == 'UW', 'Full NCBI/GISAID strain name', 'Partial NCBI/GISAID strain name')
   strain_mask <- submitter %in% c('LabCorp', 'UW', 'Helix') & example_tbl$Value %in% example_tbl$Value[example_tbl$Position %in% 'OBX[2]-5']
   strain_mask <- strain_mask | (submitter == 'Quest' & example_tbl$Value %in% example_tbl$Value[example_tbl$Position %in% c('OBX[3]-5', 'SPM-2.2.1')])
-  example_tbl$Value[strain_mask] <- text_spec(example_tbl$Value[strain_mask], 'html', background=strain_background, tooltip=strain_tooltip) # add tooltip and highlight to strain name
+  example_tbl$Value[strain_mask] <- text_spec(example_tbl$Value[strain_mask], 'html', background=strain_background, tooltip=strain_tooltip) # add tooltip and highlight strain name
   
   clin_acc_labcorp_mask <- submitter == 'Labcorp' & example_tbl$Value %in% example_tbl$Value[example_tbl$Position %in% 'OBR-3']
   clin_acc_quest_uw_mask <- submitter %in% c('Quest', 'UW') & example_tbl$Value %in% example_tbl$Value[example_tbl$Position %in% 'SPM-2.1.1']
   clin_acc_mask <- clin_acc_labcorp_mask | clin_acc_quest_uw_mask
-  example_tbl$Value[clin_acc_mask] <- text_spec(example_tbl$Value[clin_acc_mask], 'html', background='#cbb3bf', tooltip='Clinical accession') # add tooltip and highlight to strain name
+  example_tbl$Value[clin_acc_mask] <- text_spec(example_tbl$Value[clin_acc_mask], 'html', background='#cbb3bf', tooltip='Clinical accession') # add tooltip and highlight clinical accession
+  
+  reason_mask <- grepl('**SEQREA**', example_tbl$Value, fixed=TRUE)
+  example_tbl$Value[reason_mask] <- text_spec(example_tbl$Value[reason_mask], 'html', background='#c9b57e', tooltip='Sequence reason') # add tooltip and highlight reason
+  
   
   hl7_messages$string_viz[i] <- gsub('\r\n', '<br>', generate_hl7(example_tbl), fixed=TRUE)
   

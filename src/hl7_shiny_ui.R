@@ -32,7 +32,7 @@ ui <- fluidPage(
     column(
       width=6,
       selectInput("selected_table", "Choose a Sumbitter/Case:", 
-                  choices = sort(viz_df$Name, decreasing=T), selected = sort(viz_df$Name, decreasing=T)[1])
+                  choices = viz_df$Name, selected = viz_df$Name[1])
     )
   ),
   tags$hr(style = "border-top: 2px solid #000000; margin: 5px 0;"),  # Adjust margin size before/after hr
